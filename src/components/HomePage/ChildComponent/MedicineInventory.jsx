@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { updateQuantity } from '../../../reducer/MedicineSlice';
+import { updateQuantity } from '../../../Reducer/MedicineSlice';
 import Barcode from 'react-barcode';
 import { Tabs, Layout, Button, Card, Form, Input, Select, Table } from 'antd';
 import { InfoCircleOutlined, HistoryOutlined, DollarOutlined } from '@ant-design/icons';
