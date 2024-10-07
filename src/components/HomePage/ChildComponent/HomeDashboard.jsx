@@ -54,7 +54,7 @@ useEffect(() => {
       let localNum = 0;
       let n = 0;
 console.log("hellow")
-      const responsed = await axios.get('http://localhost:4000/totalsale');
+      const responsed = await axios.get('https://backtade-2.onrender.com/totalsale');
        // Calculate totalSale for the selected date
        console.log("hellow world for responed")
        const selectedDateStr = date.toISOString().split('T')[0];
@@ -89,9 +89,9 @@ setGood("Not Good")
        }
     console.log("responsed")
     console.log(responsed)
-    const cou = await axios.get('http://localhost:4000/medcount')
+    const cou = await axios.get('https://backtade-2.onrender.com/medcount')
     setCe(cou.data)
-      const res = await axios.get('http://localhost:4000/medicines');
+      const res = await axios.get('https://backtade-2.onrender.com/medicines');
       res.data.forEach(item => {
         if (item.quantity < 8) {
           localShort += 1; // Count items with quantity less than 8
@@ -108,10 +108,10 @@ setGood("Not Good")
          });
          setC(n);
       setNum(localNum);
-      const hightsold = await axios.get('http://localhost:4000/api/medicine/highest-sold');
-      const jsonCount = await axios.get('http://localhost:4000/api/json-count');
-      const count = await axios.get('http://localhost:4000/userss');
-      const counts = await axios.get('http://localhost:4000/usersss');
+      const hightsold = await axios.get('https://backtade-2.onrender.com/api/medicine/highest-sold');
+      const jsonCount = await axios.get('https://backtade-2.onrender.com/api/json-count');
+      const count = await axios.get('https://backtade-2.onrender.com/userss');
+      const counts = await axios.get('https://backtade-2.onrender.com/usersss');
 setUsers(counts.data.supplierCount);
       console.log("count")
 setCountS(count.data.supplierCount);

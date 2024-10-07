@@ -15,7 +15,7 @@ const MedicineGroupName = () => {
   useEffect(() => {
     const fetchMedicineData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/medicines');
+        const response = await axios.get('https://backtade-2.onrender.com/medicines');
         const medicines = response.data;
         const groups = medicines.reduce((acc, medicine) => {
           if (!acc.includes(medicine.medicineGroup)) {

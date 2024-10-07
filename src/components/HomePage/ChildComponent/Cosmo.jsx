@@ -31,7 +31,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
 
   const fetchTransaction  = async () =>{
     try {
-      const response = await axios.get('http://localhost:4000/salesTransaction'); // Adjust the endpoint as 
+      const response = await axios.get('https://backtade-2.onrender.com/salesTransaction'); // Adjust the endpoint as 
       console.log("now reported")
       console.log(response.data)
       setDataTransaction(response.data);
@@ -56,9 +56,9 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
     const updatedItem = { ...selectedItem, quantity: selectedItem.quantity - soldQuantity };
   
     try {
-      await axios.put(`http://localhost:4000/Cosmo/${selectedItem._id}`, updatedItem);
+      await axios.put(`https://backtade-2.onrender.com/Cosmo/${selectedItem._id}`, updatedItem);
       // Add logic to log the sale in your database 
-      await axios.post('http://localhost:4000/salesTransaction', {
+      await axios.post('https://backtade-2.onrender.com/salesTransaction', {
         itemId: selectedItem._id,
         name:selectedItem.name,
         price:selectedItem.price,
@@ -78,7 +78,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
   
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/Cosmo');
+      const response = await axios.get('https://backtade-2.onrender.com/Cosmo');
       setData(response.data);
       setFilteredData(response.data); // Initialize filtered data
       
@@ -120,9 +120,9 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
 
     try {
       if (editMode && currentItem) {
-        await axios.put(`http://localhost:4000/Cosmo/${currentItem._id}`, newItem);
+        await axios.put(`https://backtade-2.onrender.com/Cosmo/${currentItem._id}`, newItem);
       } else {
-        await axios.post('http://localhost:4000/Cosmo', newItem);
+        await axios.post('https://backtade-2.onrender.com/Cosmo', newItem);
       }
       fetchItems(); // Refresh the item list
       handleClose();
@@ -141,7 +141,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
       cancelText: 'No',
       onOk: async () => {
         try {
-          await axios.delete(`http://localhost:4000/Cosmo/${key}`);
+          await axios.delete(`https://backtade-2.onrender.com/Cosmo/${key}`);
           fetchItems(); // Refresh the item list
         } catch (error) {
           console.error('Error deleting item:', error);
@@ -238,7 +238,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
     cancelText: 'No',
     onOk: async () => {
       try {
-        await axios.delete(`http://localhost:4000/CosmoTransactionDelte`);
+        await axios.delete(`https://backtade-2.onrender.com/CosmoTransactionDelte`);
         fetchItems(); // Refresh the item list
       } catch (error) {
         console.error('Error deleting item:', error);

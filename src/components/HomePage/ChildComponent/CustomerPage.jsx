@@ -16,7 +16,7 @@ const CustomerPage = () => {
   const [editModalVisible, setEditModalVisible] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/customers')
+    fetch('https://backtade-2.onrender.com/api/customers')
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -25,7 +25,7 @@ const CustomerPage = () => {
   const handleSearchChange = (event) => setSearchTerm(event.target.value);
 
   const handleAddCustomer = () => {
-    fetch('http://localhost:4000/api/customers', {
+    fetch('https://backtade-2.onrender.com/api/customers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newCustomer),
@@ -49,7 +49,7 @@ const CustomerPage = () => {
   };
 
  const handleDeleteCustomer = (id, dateTime = null) => {
-  const url = `http://localhost:4000/api/customers${dateTime ? '' : '/' + id}`;
+  const url = `https://backtade-2.onrender.com/api/customers${dateTime ? '' : '/' + id}`;
 
   const options = {
     method: 'DELETE',
@@ -93,7 +93,7 @@ const CustomerPage = () => {
   };
 
   const handleSaveEdit = () => {
-    fetch(`http://localhost:4000/api/customers/${editingCustomer.phone}`, {
+    fetch(`https://backtade-2.onrender.com/api/customers/${editingCustomer.phone}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editingCustomer),

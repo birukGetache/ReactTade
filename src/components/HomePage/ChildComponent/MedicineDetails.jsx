@@ -19,7 +19,7 @@ const MedicineDetails = () => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/medicinesGroup/${selectedGroupId}`);
+        const response = await axios.get(`https://backtade-2.onrender.com/medicinesGroup/${selectedGroupId}`);
         console.log(response.data)
         setMedicines(response.data);
       } catch (error) {

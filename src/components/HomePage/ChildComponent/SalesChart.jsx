@@ -19,7 +19,7 @@ const SalesChart = () => {
   // Fetch all sales data
   const fetchAllSalesData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/sales'); // No date filter
+      const response = await axios.get('https://backtade-2.onrender.com/sales'); // No date filter
       setData(response.data);
       filterTodaySales(response.data); // Filter for today's sales on initial fetch
     } catch (error) {

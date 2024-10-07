@@ -20,7 +20,7 @@ const ContactManagement = () => {
   // Fetch contacts from the server
   const fetchContacts = async () => {
     try {
-      const response = await fetch('http://localhost:4000/contacts');
+      const response = await fetch('https://backtade-2.onrender.com/contacts');
       const data = await response.json();
       console.log('Fetched contacts:', data);
 
@@ -78,7 +78,7 @@ const ContactManagement = () => {
 
   const saveToServer = async (contactsToSave) => {
     try {
-      await fetch('http://localhost:4000/contacts', {
+      await fetch('https://backtade-2.onrender.com/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -18,7 +18,7 @@ const UsersList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/users');
+        const response = await axios.get('https://backtade-2.onrender.com/users');
         setUsers(response.data);
       } catch (err) {
         setError('Error fetching users');
@@ -47,7 +47,7 @@ const UsersList = () => {
 
   const handleEditSubmit = async (values) => {
     try {
-      const response = await axios.put(`http://localhost:4000/users/${editingUser}`, values);
+      const response = await axios.put(`https://backtade-2.onrender.com/users/${editingUser}`, values);
       setUsers(users.map(user => user._id === editingUser ? response.data : user));
       setIsModalOpen(false);
       toast.success('User updated successfully!');
@@ -59,7 +59,7 @@ const UsersList = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`http://localhost:4000/users/${userId}`);
+      await axios.delete(`https://backtade-2.onrender.com/users/${userId}`);
       setUsers(users.filter(user => user._id !== userId));
       toast.success('User deleted successfully!');
     } catch (err) {

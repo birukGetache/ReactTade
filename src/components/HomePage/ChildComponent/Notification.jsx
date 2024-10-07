@@ -44,7 +44,7 @@ const CalendarWithEvents = () => {
 
   const fetchMedicines = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/medicines');
+      const response = await axios.get('https://backtade-2.onrender.com/medicines');
       setMedicines(response.data);
     } catch (error) {
       console.error('Error fetching medicines:', error);
@@ -60,7 +60,7 @@ const CalendarWithEvents = () => {
       cancelText: 'No',
       onOk: async () => {
         try {
-          await axios.delete(`http://localhost:4000/medicines/${medicineId}`);
+          await axios.delete(`https://backtade-2.onrender.com/medicines/${medicineId}`);
           fetchMedicines(); // Refresh the medicine list after deletion
         } catch (error) {
           console.error('Error deleting medicine:', error);

@@ -65,7 +65,7 @@ const UserProfile = () => {
     try {
       const currentDate = new Date();
       const formattedDate = currentDate.toLocaleDateString();
-      const res = await axios.get(`http://localhost:4000/transaction/${formattedDate}`);
+      const res = await axios.get(`https://backtade-2.onrender.com/transaction/${formattedDate}`);
       if (res.status === 200) {
         toast.success("User deleted successfully", {
           position: "top-right",
@@ -83,7 +83,7 @@ const UserProfile = () => {
   
   useEffect(()=>{
     const fetch = async () =>{
-      const res = await axios.get('http://localhost:4000/usersAdmin');
+      const res = await axios.get('https://backtade-2.onrender.com/usersAdmin');
       console.log("Admins");
      setData(res.data)
     }
@@ -93,7 +93,7 @@ const UserProfile = () => {
   
   const handleModalSave = async ()  => {
     // Handle save logic for the modal form
-  const res = await axios.post('http://localhost:4000/register' , {username:newUsername , password:newPassword ,phone})
+  const res = await axios.post('https://backtade-2.onrender.com/register' , {username:newUsername , password:newPassword ,phone})
 if(res.status=== 400){
   alert("Godd Job")
 }

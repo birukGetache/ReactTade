@@ -24,7 +24,7 @@ const UserForm = () => {
 
   const handleSubmit = async (values) => {
     try {
-      await axios.post('http://localhost:4000/users', values);
+      await axios.post('https://backtade-2.onrender.com/users', values);
       toast.success('User saved successfully!');
       handleClear();
     } catch (error) {

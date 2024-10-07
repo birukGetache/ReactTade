@@ -17,7 +17,7 @@ const EllipsisMenu = () => {
   const handleLogout = async () => {
     try {
       // Send request to delete the user from the database
-      await axios.delete(`http://localhost:4000/user/${_id}`);
+      await axios.delete(`https://backtade-2.onrender.com/user/${_id}`);
       navigate('/');
       // Clear user state and handle logout (e.g., redirect to login page)
       dispatch(setUser(null)); // Clear the user from Redux store

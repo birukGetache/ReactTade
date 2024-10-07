@@ -31,7 +31,7 @@ const MedicineDashboard = () => {
       content: 'Are you sure you want to delete this item?',
       onOk: async () => {
         try {
-          await axios.delete(`http://localhost:4000/medicines/${medicineId}`);
+          await axios.delete(`https://backtade-2.onrender.com/medicines/${medicineId}`);
           setRefreshKey(prevKey => prevKey + 1);// Update data after deletion
           notification.success({
             message: 'Deletion Successful',
@@ -49,10 +49,10 @@ const MedicineDashboard = () => {
   };
   const fetchMedicines = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/medicines');
+      const response = await axios.get('https://backtade-2.onrender.com/medicines');
       const datas = response.data;
 
-      const res = await axios.get('http://localhost:4000/mark');
+      const res = await axios.get('https://backtade-2.onrender.com/mark');
       const r = res.data;
 
       console.log("Response from /mark: ", r);
@@ -136,7 +136,7 @@ useEffect(() => {
   const handleMark = async (medicine) => {
     try {
       // Send selected medicine data to the backend
-      await axios.post('http://localhost:4000/mark', { medicine });
+      await axios.post('https://backtade-2.onrender.com/mark', { medicine });
       alert(`${medicine.medicineName} marked successfully!`);
       setRefreshKey(prevKey => prevKey + 1);
     } catch (error) {

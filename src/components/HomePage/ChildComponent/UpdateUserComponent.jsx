@@ -38,7 +38,7 @@ const UpdateUserComponent = ({ user, onSave, onCancel }) => {
 
     try {
       // Send data to backend using axios
-      const response = await axios.put('http://localhost:4000/api/user/update', formData, {
+      const response = await axios.put('https://backtade-2.onrender.com/api/user/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

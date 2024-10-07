@@ -16,7 +16,7 @@ const CreateUserForm = ({ onCreate }) => {
     // Reset form fields after submission
     try {
       // Make a POST request to the /register endpoint
-      const response = await axios.post('http://localhost:4000/register', {
+      const response = await axios.post('https://backtade-2.onrender.com/register', {
         username,
         password,
         role,
@@ -163,7 +163,7 @@ const UserList = ({ onEdit }) => {
     const fetchUsers = async () => {
       try {
         // Fetch all users from the backend
-        const response = await axios.get('http://localhost:4000/users'); // Adjust endpoint as needed
+        const response = await axios.get('https://backtade-2.onrender.com/users'); // Adjust endpoint as needed
         setUsers(response.data);
       } catch (err) {
         setError(err.message);
@@ -182,7 +182,7 @@ const UserList = ({ onEdit }) => {
 
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`http://localhost:4000/users/${userId}`);
+      await axios.delete(`https://backtade-2.onrender.com/users/${userId}`);
       // Remove the user from state after deletion
       setUsers(users.filter(user => user._id !== userId));
     } catch (error) {
@@ -217,7 +217,7 @@ const UserDashboard = () => {
   const handleCreateUser = async (newUser) => {
     try {
       // Replace with actual API call to create the user
-      const response = await axios.post('http://localhost:4000/users', newUser);
+      const response = await axios.post('https://backtade-2.onrender.com/users', newUser);
       setUsers([...users, response.data]);
     } catch (error) {
       console.error('Error creating user:', error);
@@ -227,7 +227,7 @@ const UserDashboard = () => {
   const handleUpdateUser = async (updatedUser) => {
     try {
       // Replace with actual API call to update the user
-      const response = await axios.put(`http://localhost:4000/users/${updatedUser._id}`, updatedUser);
+      const response = await axios.put(`https://backtade-2.onrender.com/users/${updatedUser._id}`, updatedUser);
       setUsers(users.map(user => (user._id === updatedUser._id ? response.data : user)));
       setEditingUser(null);
       setModalIsOpen(false);
@@ -238,7 +238,7 @@ const UserDashboard = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:4000/users/${userId}`);
+      await axios.delete(`https://backtade-2.onrender.com/users/${userId}`);
       setUsers(users.filter(user => user._id !== userId));
     } catch (error) {
       console.error('Error deleting user:', error);

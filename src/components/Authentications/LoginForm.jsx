@@ -33,7 +33,7 @@ const LoginForm = () => {
     const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'jfif'];
     
     for (const extension of imageExtensions) {
-      const imageUrl = `http://localhost:4000/uploads/${username}.${extension}`;
+      const imageUrl = `https://backtade-2.onrender.com/uploads/${username}.${extension}`;
       const exists = await checkImageExists(imageUrl);
       
       if (exists) {
@@ -48,7 +48,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const result = await axios.post('http://localhost:4000/register', {
+      const result = await axios.post('https://backtade-2.onrender.com/login', {
         username,
         password,
       });

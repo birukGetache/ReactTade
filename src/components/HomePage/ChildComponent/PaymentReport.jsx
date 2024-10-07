@@ -26,7 +26,7 @@ const PaymentReport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/transactions');
+        const response = await axios.get('https://backtade-2.onrender.com/api/transactions');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching transaction data:', error);

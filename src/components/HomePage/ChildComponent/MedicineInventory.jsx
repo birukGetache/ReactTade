@@ -91,7 +91,7 @@ const MedicineInventory = () => {
     if (medicine) {
       const fetchHistory = async () => {
         try {
-          const response = await axios.get(`http://localhost:4000/transactions?medicineId=${medicine.medicineId}`);
+          const response = await axios.get(`https://backtade-2.onrender.com/transactions?medicineId=${medicine.medicineId}`);
           setHistory(response.data);
           const total = response.data.reduce((acc, item) => acc + item.totalAmount, 0);
           setTotalSales(total);
@@ -122,7 +122,7 @@ const MedicineInventory = () => {
       }
 
       try {
-        await axios.put(`http://localhost:4000/medicines/${medicine.medicineId}`, {
+        await axios.put(`https://backtade-2.onrender.com/medicines/${medicine.medicineId}`, {
           quantity: newQuantity,
         });
 
@@ -136,7 +136,7 @@ const MedicineInventory = () => {
           saler: user.username,
         };
 
-        await axios.post('http://localhost:4000/transactions', transaction);
+        await axios.post('https://backtade-2.onrender.com/transactions', transaction);
 
         setHistory((prevHistory) => [transaction, ...prevHistory]);
         dispatch(updateQuantity({ medicineId: medicine.medicineId, newQuantity }));

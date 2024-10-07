@@ -38,8 +38,8 @@ const UserSupplierPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const usersResponse = await axios.get('http://localhost:4000/usersAdmin');
-        const suppliersResponse = await axios.get('http://localhost:4000/users');
+        const usersResponse = await axios.get('https://backtade-2.onrender.com/usersAdmin');
+        const suppliersResponse = await axios.get('https://backtade-2.onrender.com/users');
         
         setUsers(usersResponse.data);
         setSuppliers(suppliersResponse.data);

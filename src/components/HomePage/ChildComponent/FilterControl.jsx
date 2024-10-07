@@ -14,7 +14,7 @@ const FilterControls = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/transactions');
+        const response = await axios.get('https://backtade-2.onrender.com/api/transactions');
         const sortedData = response.data.sort((a, b) => new Date(a.date) - new Date(b.date));
         setTransactions(sortedData);
         console.log(sortedData);

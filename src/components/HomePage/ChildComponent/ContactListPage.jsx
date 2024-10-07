@@ -129,7 +129,7 @@ const ContactListPage = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/contacts');
+        const response = await axios.get('https://backtade-2.onrender.com/contacts');
         const fetchedContacts = Array.isArray(response.data) ? response.data : [response.data];
         setContacts(fetchedContacts);
       } catch (error) {
@@ -160,7 +160,7 @@ const ContactListPage = () => {
 
   const saveToServer = async () => {
     try {
-      await axios.post('http://localhost:4000/contacts', contacts);
+      await axios.post('https://backtade-2.onrender.com/contacts', contacts);
       toast.success('Contacts saved successfully');
     } catch (error) {
       console.error('Error saving contacts:', error);
@@ -170,7 +170,7 @@ const ContactListPage = () => {
 
   const handleDelete = async (phone) => {
     try {
-      await axios.delete(`http://localhost:4000/contacts/${phone}`);
+      await axios.delete(`https://backtade-2.onrender.com/contacts/${phone}`);
       setContacts(prevContacts => prevContacts.filter(contact => contact.phone !== phone));
       toast.success('Contact deleted');
     } catch (error) {
@@ -181,7 +181,7 @@ const ContactListPage = () => {
 
   const handleClearAll = async () => {
     try {
-      await axios.delete('http://localhost:4000/contacts'); // Ensure your API supports this
+      await axios.delete('https://backtade-2.onrender.com/contacts'); // Ensure your API supports this
       setContacts([]);
       toast.success('All contacts cleared');
     } catch (error) {

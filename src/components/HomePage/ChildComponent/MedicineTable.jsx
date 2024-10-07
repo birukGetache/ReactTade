@@ -12,7 +12,7 @@ const MedicineTable = ({ searchTerm, filterOption }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/medicines');
+        const response = await axios.get('https://backtade-2.onrender.com/medicines');
         const fetchedData = response.data.map(item => ({
           ...item,
           action: 'View Full Detail',
@@ -48,7 +48,7 @@ const MedicineTable = ({ searchTerm, filterOption }) => {
       content: 'Are you sure you want to delete this item?',
       onOk: async () => {
         try {
-          await axios.delete(`http://localhost:4000/medicines/${medicineId}`);
+          await axios.delete(`https://backtade-2.onrender.com/medicines/${medicineId}`);
           // Update data after deletion
           setData(prevData => prevData.filter(item => item.medicineId !== medicineId));
           notification.success({

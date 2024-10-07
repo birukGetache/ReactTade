@@ -34,7 +34,7 @@ const FormWrapper = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/medicines', {
+      const response = await axios.post('https://backtade-2.onrender.com/medicines', {
       medicineName,
         medicineId,
         batchNumber,

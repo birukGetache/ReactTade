@@ -66,7 +66,7 @@ const ContactReport = () => {
     // Fetch contact data from the backend
     const fetchContacts = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/contacts/');
+        const response = await axios.get('https://backtade-2.onrender.com/contacts/');
         setContacts(response.data);
       } catch (error) {
         console.error('Error fetching contacts:', error);
@@ -108,7 +108,7 @@ const ContactReport = () => {
 
   const handleRemoveAllContacts = async () => {
     try {
-      await axios.delete('http://localhost:4000/contacts');
+      await axios.delete('https://backtade-2.onrender.com/contacts');
       setContacts([]);
       toast.success('All contacts removed successfully');
     } catch (error) {
