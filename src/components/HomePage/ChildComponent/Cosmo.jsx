@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Modal, Form, Input, DatePicker, Select, Table, InputNumber, Tabs   } from 'antd';
+import { Button, Modal, Form, Input, DatePicker, Select, Table, InputNumber, Tabs } from 'antd';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import moment from 'moment';
-import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const { Option } = Select;
 const { TabPane } = Tabs;
@@ -19,30 +18,27 @@ const Cosmo = () => {
   const [saleVisible, setSaleVisible] = useState(false);
   const [soldQuantity, setSoldQuantity] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
-  const[dataTransaction , setDataTransaction] = useState([]);
+  const [dataTransaction, setDataTransaction] = useState([]);
   const [transactionSearchText, setTransactionSearchText] = useState('');
-const [filteredTransactionData, setFilteredTransactionData] = useState(dataTransaction);
-const [analysisData, setAnalysisData] = useState([]); // State for analysis data
+  const [filteredTransactionData, setFilteredTransactionData] = useState(dataTransaction);
+  const [analysisData, setAnalysisData] = useState([]);
+
   useEffect(() => {
-    fetchItems(); // Fetch items on component mount
+    fetchItems();
     fetchTransaction();
-    
   }, []);
 
-  const fetchTransaction  = async () =>{
+  const fetchTransaction = async () => {
     try {
-      const response = await axios.get('https://backtade-2.onrender.com/salesTransaction'); // Adjust the endpoint as 
-      console.log("now reported")
-      console.log(response.data)
+      const response = await axios.get('https://backtade-2.onrender.com/salesTransaction');
       setDataTransaction(response.data);
       setFilteredTransactionData(response.data);
       calculateAnalysisData(response.data);
     } catch (error) {
       console.error('Error fetching sales data:', error);
     }
-  }
+  };
 
-  
   const handleSale = async () => {
     if (soldQuantity > selectedItem.quantity) {
       Modal.error({
@@ -51,37 +47,33 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
       });
       return;
     }
-    console.log(selectedItem.quantity)
-  
+
     const updatedItem = { ...selectedItem, quantity: selectedItem.quantity - soldQuantity };
-  
+
     try {
       await axios.put(`https://backtade-2.onrender.com/Cosmo/${selectedItem._id}`, updatedItem);
-      // Add logic to log the sale in your database 
       await axios.post('https://backtade-2.onrender.com/salesTransaction', {
         itemId: selectedItem._id,
-        name:selectedItem.name,
-        price:selectedItem.price,
+        name: selectedItem.name,
+        price: selectedItem.price,
         quantity: soldQuantity,
-        pharamacist: user.username, // Assuming you have user info
+        pharmacist: user.username,
       });
-      fetchItems(); // Refresh the item list
-      fetchdata(); // Refresh sales data
+      fetchItems();
+      fetchTransaction();
       setSaleVisible(false);
       setSoldQuantity(0);
       Modal.success({ content: 'Item sold successfully!' });
-    } catch (error) { 
+    } catch (error) {
       console.error('Error processing sale:', error);
     }
   };
 
-  
   const fetchItems = async () => {
     try {
       const response = await axios.get('https://backtade-2.onrender.com/Cosmo');
       setData(response.data);
-      setFilteredData(response.data); // Initialize filtered data
-      
+      setFilteredData(response.data);
     } catch (error) {
       console.error('Error fetching items:', error);
     }
@@ -111,7 +103,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
     const newItem = {
       name,
       type,
-      expireDate: expireDate.format('YYYY-MM-DD'), // Format the date
+      expireDate: expireDate.toISOString().split('T')[0], // Format the date
       price,
       tax,
       totalPrice,
@@ -124,9 +116,8 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
       } else {
         await axios.post('https://backtade-2.onrender.com/Cosmo', newItem);
       }
-      fetchItems(); // Refresh the item list
+      fetchItems();
       handleClose();
-
     } catch (error) {
       console.error(editMode ? 'Error updating item:' : 'Error adding item:', error);
     }
@@ -142,7 +133,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
       onOk: async () => {
         try {
           await axios.delete(`https://backtade-2.onrender.com/Cosmo/${key}`);
-          fetchItems(); // Refresh the item list
+          fetchItems();
         } catch (error) {
           console.error('Error deleting item:', error);
         }
@@ -154,7 +145,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
     const value = e.target.value;
     setSearchText(value);
 
-    const filtered = data.filter(item => 
+    const filtered = data.filter(item =>
       item.name.toLowerCase().includes(value.toLowerCase()) ||
       item.type.toLowerCase().includes(value.toLowerCase())
     );
@@ -183,6 +174,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
       ),
     },
   ];
+
   const columnSale = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
     { title: 'Type', dataIndex: 'type', key: 'type' },
@@ -196,56 +188,56 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
       key: 'action',
       render: (text, record) => (
         <>
-          <Button type="primary" style={{ marginRight: 8 }} onClick={()=>{  {setSaleVisible(true)
-                                                                              setSelectedItem(record);
-          }}}>
+          <Button type="primary" style={{ marginRight: 8 }} onClick={() => { setSaleVisible(true); setSelectedItem(record); }}>
             Sale
           </Button>
         </>
       ),
     },
   ];
+
   const ColumnsTransaction = [
     { title: 'Name', dataIndex: 'name', key: 'name' },
     { title: 'Quantity', dataIndex: 'quantity', key: 'quantity' },
     { title: 'Price', dataIndex: 'price', key: 'price' },
-    { title: 'Pharamasict', dataIndex: 'pharamacist', key: 'pharamacist' },
+    { title: 'Pharmacist', dataIndex: 'pharamacist', key: 'pharamacist' },
     { title: 'Sold Time', dataIndex: 'createdAt', key: 'createdAt' },
   ];
+
   const handleTransactionSearch = (e) => {
     const value = e.target.value;
     setTransactionSearchText(value);
 
     if (!value) {
-      // If search text is empty, show all transactions
       setFilteredTransactionData(dataTransaction);
       return;
     }
 
-    const filtered = dataTransaction.filter(transaction => 
+    const filtered = dataTransaction.filter(transaction =>
       transaction.name.toLowerCase().includes(value.toLowerCase()) ||
       transaction.pharamacist.toLowerCase().includes(value.toLowerCase())
     );
 
     setFilteredTransactionData(filtered);
   };
- const handleReset = async () =>{
-  Modal.confirm({
-    title: 'Are you sure you want to delete this item?',
-    content: 'This action cannot be undone.',
-    okText: 'Yes',
-    okType: 'danger',
-    cancelText: 'No',
-    onOk: async () => {
-      try {
-        await axios.delete(`https://backtade-2.onrender.com/CosmoTransactionDelte`);
-        fetchItems(); // Refresh the item list
-      } catch (error) {
-        console.error('Error deleting item:', error);
-      }
-    },
-  });
- }
+
+  const handleReset = async () => {
+    Modal.confirm({
+      title: 'Are you sure you want to delete this item?',
+      content: 'This action cannot be undone.',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk: async () => {
+        try {
+          await axios.delete(`https://backtade-2.onrender.com/CosmoTransactionDelte`);
+          fetchItems();
+        } catch (error) {
+          console.error('Error deleting item:', error);
+        }
+      },
+    });
+  };
 
   const calculateAnalysisData = (transactions) => {
     const analysisMap = {};
@@ -274,9 +266,8 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
     { title: 'Total Sold Price', dataIndex: 'totalPrice', key: 'totalPrice' },
   ];
 
-
   return (
-    <div style={{padding:"20px"}}>
+    <div style={{ padding: "20px" }}>
       <Tabs defaultActiveKey="1">
         {user.role === "mainAdmin" && (
           <TabPane tab="Items" key="1">
@@ -297,7 +288,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
             >
               <Form
                 onFinish={handleSubmit}
-                initialValues={editMode ? { ...currentItem, expireDate: moment(currentItem.expireDate) } : {}}
+                initialValues={editMode ? { ...currentItem, expireDate: new Date(currentItem.expireDate) } : {}}
               >
                 <Form.Item name="name" label="Name" rules={[{ required: true }]}>
                   <Input />
@@ -316,7 +307,7 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
                   <InputNumber min={1} />
                 </Form.Item>
                 <Form.Item name="expireDate" label="Expire Date" rules={[{ required: true }]}>
-                  <DatePicker />
+                  <DatePicker onChange={(date) => {}} />
                 </Form.Item>
                 <Form.Item name="price" label="Price" rules={[{ required: true, type: 'number', min: 0 }]}>
                   <InputNumber min={0} />
@@ -333,45 +324,47 @@ const [analysisData, setAnalysisData] = useState([]); // State for analysis data
         )}
         <TabPane tab="Sales" key="2">
           <h3>Sales Data</h3>
-  <Table dataSource={data} columns={columnSale} pagination={false} />
+          <Table dataSource={data} columns={columnSale} pagination={false} />
 
-  <Modal
-    title={`Sell ${selectedItem?.name}`}
-    visible={saleVisible}
-    onCancel={() => setSaleVisible(false)}
-    footer={null}
-  >
-    <Form onFinish={handleSale}>
-      <Form.Item label="Quantity Sold" required>
-        <InputNumber
-          min={1}
-          max={selectedItem?.quantity}
-          value={soldQuantity}
-          onChange={setSoldQuantity}
-        />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Confirm Sale
-        </Button>
-      </Form.Item>
-    </Form>
-  </Modal>
-</TabPane>
+          <Modal
+            title={`Sell ${selectedItem?.name}`}
+            visible={saleVisible}
+            onCancel={() => setSaleVisible(false)}
+            footer={null}
+          >
+            <Form onFinish={handleSale}>
+              <Form.Item label="Quantity Sold" required>
+                <InputNumber
+                  min={1}
+                  max={selectedItem?.quantity}
+                  value={soldQuantity}
+                  onChange={setSoldQuantity}
+                />
+              </Form.Item>
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  Confirm Sale
+                </Button>
+              </Form.Item>
+            </Form>
+          </Modal>
+        </TabPane>
 
         {user.role === "mainAdmin" && (
           <TabPane tab="Transactions" key="3">
-    <Input
-    placeholder="Search by name or pharmacist"
-    value={transactionSearchText}
-    onChange={handleTransactionSearch}
-    style={{ margin: '16px 0' }}
-  />
+            <Input
+              placeholder="Search by name or pharmacist"
+              value={transactionSearchText}
+              onChange={handleTransactionSearch}
+              style={{ margin: '16px 0' }}
+            />
             <Table dataSource={filteredTransactionData} columns={ColumnsTransaction} pagination={false} />
-          <div style={{margin:"10px"}}><Button onClick={handleReset}>Reset Transaction</Button></div>  
+            <div style={{ margin: "10px" }}>
+              <Button onClick={handleReset}>Reset Transaction</Button>
+            </div>
           </TabPane>
         )}
-       {user.role === "mainAdmin" && (
+        {user.role === "mainAdmin" && (
           <TabPane tab="Analysis" key="4">
             <h3>Sales Analysis</h3>
             <Table dataSource={analysisData} columns={analysisColumns} pagination={false} />
