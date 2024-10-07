@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Button, DatePicker, Row, Col } from 'antd';
 import axios from 'axios';
-import moment from 'moment';
 
 const { Option } = Select;
 
@@ -17,7 +16,7 @@ const FormWrapper = () => {
   const [stripPerPk, setStripPerPk] = useState(1);
   const [tabletsPerStrip, setTabletsPerStrip] = useState(1);
   const [quantity, setTotalQuantity] = useState(0);
-  const [expirationDate, setExpirationDate] = useState('');
+  const [expirationDate, setExpirationDate] = useState(null);
 
   useEffect(() => {
     setMedicineId(`MED${new Date().getTime()}`);
@@ -35,7 +34,7 @@ const FormWrapper = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post('https://backtade-2.onrender.com/medicines', {
-      medicineName,
+        medicineName,
         medicineId,
         batchNumber,
         medicineGroup,
@@ -46,8 +45,7 @@ const FormWrapper = () => {
         stripPerPk,
         tabletsPerStrip,
         quantity,
-        expirationDate
-
+        expirationDate,
       });
 
       console.log('Medicine added successfully:', response.data);
@@ -61,14 +59,14 @@ const FormWrapper = () => {
       setStripPerPk('');
       setTabletsPerStrip('');
       setTotalQuantity(0);
-      setExpirationDate('');
+      setExpirationDate(null);
     } catch (error) {
       console.error('Error adding medicine:', error.response ? error.response.data : error.message);
     }
   };
 
   return (
-    <div style={{ padding: '20px', background: '#f9f9f9', borderRadius: '8px' , height:` calc(90vh - 50px)`}}>
+    <div style={{ padding: '20px', background: '#f9f9f9', borderRadius: '8px', height: `calc(90vh - 50px)` }}>
       <Form layout="vertical" onFinish={handleSubmit}>
         <Form.Item label="Medicine ID" required>
           <Input value={medicineId} readOnly />
@@ -204,8 +202,8 @@ const FormWrapper = () => {
           <Col span={8}>
             <Form.Item label="Expiration Date" required>
               <DatePicker
-                value={expirationDate ? moment(expirationDate) : null}
-                onChange={(date, dateString) => setExpirationDate(dateString)}
+                value={expirationDate}
+                onChange={(date) => setExpirationDate(date ? date.toISOString() : null)}
                 required
               />
             </Form.Item>
