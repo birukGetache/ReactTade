@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Button, DatePicker, Row, Col } from 'antd';
 import axios from 'axios';
-
+import dayjs from 'dayjs'; // Import dayjs
 const { Option } = Select;
 
 const FormWrapper = () => {
@@ -45,7 +45,7 @@ const FormWrapper = () => {
         stripPerPk,
         tabletsPerStrip,
         quantity,
-        expirationDate,
+        expirationDate: expirationDate ? expirationDate.toISOString() : null,
       });
 
       console.log('Medicine added successfully:', response.data);
@@ -200,13 +200,11 @@ const FormWrapper = () => {
           </Col>
 
           <Col span={8}>
-            <Form.Item label="Expiration Date" required>
-              <DatePicker
-                value={expirationDate}
-                onChange={(date) => setExpirationDate(date ? date.toISOString() : null)}
-                required
-              />
-            </Form.Item>
+          <DatePicker
+          value={expirationDate ? dayjs(expirationDate) : null} // Use dayjs for value
+          onChange={(date) => setExpirationDate(date)} // Store dayjs object
+          required
+        />
           </Col>
         </Row>
 
