@@ -23,7 +23,7 @@ export const SideBar = styled.div`
   overflow-y: scroll; /* Allows scrolling */
   overflow-x: hidden; /* Hides horizontal scroll if not needed */
   /* Remove the scrollbar appearance */
-  
+  position:relative;
   /* Custom scrollbar styles */
   &::-webkit-scrollbar {
     display: none; /* Hides the scrollbar */
