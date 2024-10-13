@@ -78,7 +78,7 @@ export const Dashboard = styled.div`
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
   border: 2px solid white; 
-  width:90%;
+  width:80%;
   padding: 3px;
   border-radius: 6px;
    margin:4px auto;
@@ -132,7 +132,7 @@ cursor:pointer;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-      width:90%;
+      width:80%;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
@@ -154,7 +154,7 @@ cursor:pointer;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-      width:90%;
+      width:80%;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
@@ -176,7 +176,7 @@ cursor:pointer;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-      width:90%;
+      width:80%;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
@@ -203,7 +203,7 @@ cursor:pointer;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-      width:90%;
+      width:80%;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
@@ -230,7 +230,7 @@ cursor:pointer;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-      width:90%;
+      width:80%;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
@@ -258,7 +258,7 @@ cursor:pointer;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-      width:90%;
+      width:80%;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
@@ -283,7 +283,7 @@ cursor:pointer;
     height: 70px;
   border: 2px solid white; 
   padding: 3px;
-    width:90%;
+    width:80%;
   border-radius: 6px;
   margin:4px auto;
   
