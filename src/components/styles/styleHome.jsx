@@ -7,6 +7,10 @@ width:100%;
 display:grid;
 grid-template-columns:2fr 8fr;
 background-color:#edf1f5;
+@media screen and (max-width: 1500px) {
+  background-color:white;
+grid-template-columns:1fr;
+}
 `
 export const HomeContent = styled.div`
 
@@ -27,11 +31,26 @@ export const SideBar = styled.div`
 
   /* For Firefox */
   scrollbar-width: none; /* Hides scrollbar */
+  @media screen and (max-width: 1500px) {
+ display: flex;  
+   justify-content:center;
+   align-items:center;
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: fit-content; 
+    gap: 10px;
+}
 `;
 
 export const Image = styled.img`
 width:100%;
-height:auto;`
+height:auto;
+@media screen and (max-width: 1500px) {
+  width:auto;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}`
 export const AdminInfo = styled.div`
 height:15vh;
 width:auto;
@@ -54,6 +73,15 @@ export const Dashboard = styled.div`
   background-color: ${(props) => (props.clicked === 1 ? '#009099' : 'transparent')};
   height: 8vh;
   cursor: pointer;
+  @media screen and (max-width: 1500px) {
+ display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+}
 `;
 export const InputDiv = styled.div`
 margin:auto;
@@ -84,6 +112,9 @@ margin:0;
  white-space: nowrap;
 padding:0;
 font-size:15px;
+@media screen and (max-width: 1500px) {
+ font-size:26px;
+}
 
 `
 export const Invertory = styled.div`
@@ -95,6 +126,17 @@ align-items:center;
 height:fit-content;
 cursor:pointer;  
  background-color: ${(props) => (props.clicked === 13 ? '#009099' : 'transparent')};
+ @media screen and (max-width: 1500px) {
+ position:relative;
+  display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+
+}
 `
 export const InvertoryC = styled.div`
 padding-left:30px;
@@ -105,6 +147,17 @@ align-items:center;
 height:fit-content;
 cursor:pointer;  
  background-color: ${(props) => (props.clicked === 11 ? '#009099' : 'transparent')};
+  @media screen and (max-width: 1500px) {
+ position:relative;
+  display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+
+}
 `
 export const Invertorys = styled.div`
 padding-left:30px;
@@ -115,6 +168,17 @@ align-items:center;
 height:fit-content;
 cursor:pointer;  
  background-color: ${(props) => (props.clicked === 15 ? '#009099' : 'transparent')};
+   @media screen and (max-width: 1500px) {
+ position:relative;
+  display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+
+}
 `
 export const Configuration = styled.div`
 padding-left:30px;
@@ -130,6 +194,17 @@ border-top:1px solid black;
  background-color: ${(props) => (props.clicked === 2 ? '#009099' : 'transparent')};
 height:8vh;
 cursor:pointer;
+ @media screen and (max-width: 1500px) {
+ position:relative;
+  display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+
+}
 `
 export const Notification = styled.div`
 padding-left:30px;
@@ -145,6 +220,18 @@ border-top:1px solid black;
  background-color: ${(props) => (props.clicked === 3 ? '#009099' : 'transparent')};
 height:8vh;
 cursor:pointer;
+ @media screen and (max-width: 1500px) {
+ 
+  display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+  
+}
+
 `
 export const Application = styled.div`
 padding-left:30px;
@@ -160,6 +247,17 @@ border-top:1px solid black;
  background-color: ${(props) => (props.clicked === 4 ? '#009099' : 'transparent')};
 height:8vh;
 cursor:pointer;
+ @media screen and (max-width: 1500px) {
+ 
+  display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+  
+}
 `
 export const Get = styled.div`
 padding-left:30px;
@@ -171,6 +269,17 @@ cursor:pointer;
   background-color: ${(props) => (props.clicked === 5 ? '#009099' : 'transparent')};
 height:8vh;
 cursor:pointer;
+ @media screen and (max-width: 1500px) {
+ 
+  display: flex;         /* Enable flexbox */
+    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+    height: 70px;
+  border: 2px solid white; 
+  padding: 3px;
+  border-radius: 6px;
+  margin:4px;
+  
+}
 `
 export const P = styled.p`
 display:block;
@@ -187,6 +296,15 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
+          @media screen and (max-width: 1500px) {
+    width:200px;
+     padding-left:10px;
+     padding-right:10px;
+     font-size:25px;
+     text-align:center;
+     z-index:999;
+  
+}
          `
 export const P2 = styled.p`
 display:block;
@@ -203,6 +321,14 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
+             @media screen and (max-width: 1500px) {
+     width:200px;
+     padding-left:10px;
+     padding-right:10px;
+     font-size:25px;
+     text-align:center;
+   z-index:999;
+}
 `
 export const P7 = styled.p`
 display:block;
@@ -219,6 +345,14 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
+            @media screen and (max-width: 1500px) {
+   width:200px;
+     padding-left:10px;
+     padding-right:10px;
+     font-size:25px;
+     text-align:center;
+   z-index:999;
+}
 `
 export const P3 = styled.p`
 display:block;
@@ -235,6 +369,14 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
+            @media screen and (max-width: 1500px) {
+ width:200px;
+     padding-left:10px;
+     padding-right:10px;
+     font-size:25px;
+     text-align:center;
+   z-index:999;
+}
 `
 export const P6 = styled.p`
 display:block;
@@ -251,6 +393,16 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
+            @media screen and (max-width: 1500px) {
+  width:100%;
+     padding-left:10px;
+     padding-right:10px;
+     margin-right:0;
+     margin-left:0;
+     font-size:25px;
+     text-align:center;
+   z-index:999;
+}
 `
 export const P4 = styled.p`
 display:block;
@@ -267,6 +419,14 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
+            @media screen and (max-width: 1500px) {
+ width:200px;
+     padding-left:10px;
+     padding-right:10px;
+     font-size:25px;
+     text-align:center;
+   z-index:999;
+}
 `
 export const P5 = styled.p`
 display:block;
@@ -283,6 +443,16 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
+            @media screen and (max-width: 1500px) {
+   width:380px;
+     padding-left:0px;
+     padding-right:0px;
+     margin-right:0;
+     margin-left:0;
+     font-size:25px;
+     text-align:center;
+   z-index:999;
+}
 `
 export const Fotter  = styled.p`
 background:transparent;
@@ -293,6 +463,9 @@ align-items:center;
 padding-top:7%;
 margin:0;
 font-family: "DM Sans", sans-serif;
+@media screen and (max-width: 1500px) {
+display:none;
+}
 `
 
 export const Header = styled.div`
@@ -301,6 +474,10 @@ background-color:white;
 display:grid;
 width:100%;
 grid-template-columns:1fr 1fr;
+ @media screen and (max-width: 1500px) {
+ display:none;
+
+}
 `
 
 export const LanguageWithDate = styled.div`

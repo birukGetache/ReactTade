@@ -45,6 +45,9 @@ import MedicineDetails from './ChildComponent/MedicineDetails.jsx';
 import SalesChart from './ChildComponent/SalesChart.jsx';
 import { Navigate } from 'react-router-dom';
 import Cosmo from './ChildComponent/Cosmo.jsx';
+
+//for humbergur
+import { FaBars , FaTimes} from 'react-icons/fa';
 const HomePage = () => {
     const [show, setShow] = useState(false);
     const [showR, setShowR] = useState(false);
@@ -54,6 +57,13 @@ const HomePage = () => {
     const [iconC, setIconsC] = useState(true);
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    //for humbergur
+    const [showhumberger , setHum] = useState(true);
+    const [showhumbergerR , setHumR] = useState(false);
+    const hums = ()  =>{
+        setHum(!showhumberger);
+        setHumR(!showhumbergerR)
+    }
 if(user.role=== ''){
     return <Navigate to="/" />
 }
@@ -203,7 +213,7 @@ if(user.role=== ''){
         <Home>
             <SideBar>
                 <Image src='./Logo.png' alt='Logo' />
-                <div style={{display:"flex", justifyContent:"space-between" , alignItems:"center" ,borderTop:"1px solid black"}}>
+                <div style={{display:"flex", justifyContent:"space-between" , alignItems:"center" ,borderTop:"1px solid black"}} className="profile-contaner">
                     <AdminInfo>
                         <div style={{position:"relative" , display:"flex" , alignItems:"center"}} onClick={ ()=>handleClickd(26)}>
                             <PAdminInfo src={user.image} alt='User Profile' />
@@ -215,14 +225,16 @@ if(user.role=== ''){
                         </div>
                     </AdminInfo>
                     <EllipsisMenu />
+                    
                 </div>
-                {user.role === 'mainAdmin' && (
+                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px"}} onClick={hums}></FaTimes>}
+             {showhumbergerR && user.role === 'mainAdmin' && (
                     <>
                         <Dashboard clicked={clicked} onClick={ ()=>handleClickd(1)}>
                             <DashboardIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                             <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Dashboard</DashboardP>
                         </Dashboard> </>  )}
-                        <Invertory clicked={clicked} onClick={ ()=>handleClickd(13)}>
+                        {showhumbergerR &&   <Invertory clicked={clicked} onClick={ ()=>handleClickd(13)}>
                             <div style={{display:"flex" , alignItems:"center" , height:"9vh"}}>
                                 <StorageIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                                 <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Inventory</DashboardP>
@@ -241,19 +253,19 @@ if(user.role=== ''){
                                 )}
                             </div>
                             {show && 
-                                <div>
+                                <div className='sublist'>
                                     <P clicked={clicked} onClick={(event) => handleItemClick(7, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>List of Medicines</P>
                                     <P2 clicked={clicked} onClick={(event) => handleItemClick(8, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>Medicine Groups</P2>
                                     <P7 clicked={clicked} onClick={(event) => handleItemClick(101, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>Cosmotics</P7>
                                 </div>
                             }
-                        </Invertory>
-                        {user.role === 'mainAdmin' && (   <>  <Invertorys clicked={clicked} onClick={ ()=>handleClickd(15)}>
+                        </Invertory>}
+                        { showhumbergerR && user.role === 'mainAdmin' && (   <>  <Invertorys clicked={clicked} onClick={ ()=>handleClickd(15)}>
                             <div style={{display:"flex" , alignItems:"center" , height:"9vh"}}>
                                 <AssessmentIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                                 <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Report</DashboardP>
                             </div>
-                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh"}}>
+                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh"}} >
                                 {showiconR ? (
                                     <ExpandMoreIcon
                                         style={{ color: 'white', fontSize: '25px' }}
@@ -267,7 +279,7 @@ if(user.role=== ''){
                                 )}
                             </div>
                             {showR && 
-                                <div>
+                                <div className='sublist'>
                                     <P3 clicked={clicked} onClick={(event) => handleItemClick(9, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>Sales Report</P3>
                                     <P4 clicked={clicked} onClick={(event) => handleItemClick(10, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>Payment Report</P4>
                                 </div>
@@ -275,11 +287,13 @@ if(user.role=== ''){
                         </Invertorys>
                     </>
                 )}
-                  {user.role === 'mainAdmin' && (  <Configuration clicked={clicked} onClick={ ()=>handleClickd(2)}>
+                    {showhumbergerR && user.role === 'mainAdmin' && (  <Configuration clicked={clicked} onClick={ ()=>handleClickd(2)}>
                     <TuneIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                     <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Configuration</DashboardP>
                 </Configuration>)}
-                <InvertoryC clicked={clicked} onClick={ ()=>handleClickd(11)}>
+                {showhumbergerR &&(
+                    <>
+                    <InvertoryC clicked={clicked} onClick={ ()=>handleClickd(11)}>
                     <div style={{display:"flex" , alignItems:"center" , height:"9vh"}}>
                         <PeopleIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                         <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Contact management</DashboardP>
@@ -298,7 +312,7 @@ if(user.role=== ''){
                         )}
                     </div>
                     {showC && 
-                        <div style={{width:"100%" , marginRight:"-100px"}}>
+                        <div style={{width:"100%" , marginRight:"-100px"}} className='sublist'>
                             <P5 clicked={clicked} onClick={(event) => handleItemClick(17, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>contacts</P5>
                             <P6 clicked={clicked} onClick={(event) => handleItemClick(18, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>contact Report</P6>
                         </div>
@@ -316,6 +330,7 @@ if(user.role=== ''){
                     <HelpIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                     <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Get tech Help</DashboardP>
                 </Get>
+                </>)}
                 <Fotter>Powered by Safeware © 2024 v 1.1.2</Fotter>
             </SideBar>
             <HomeContent>

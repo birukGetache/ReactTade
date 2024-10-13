@@ -150,7 +150,7 @@ const Configuration = () => {
         </TabPane>
 
         <TabPane tab="User Management" key="2">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: '20px' }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: '20px' }} className='split'>
             <UserForm />
             <div style={{ overflowY: "auto", height: "60vh" }}>
               <UsersList />

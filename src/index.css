@@ -52,3 +52,70 @@ html, body {
 .delete-button:hover {
   color: darkred; /* Change color on hover for better interaction */
 }
+.profile-container{
+  width:auto;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: #1a222b solid 2px;
+}
+
+
+@media screen and (max-width: 1500px) {
+  .wrap{
+   flex-wrap: wrap;
+   height: fit-content !important;
+  }
+
+  .sublist{
+    position: absolute;
+    top:80px;
+    width: 100%;
+    z-index: 9999;
+    display: grid;
+    justify-content: center;
+  }
+ }
+ @media screen and (max-width: 500px) {
+ .split{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  height:fit-content !important;
+
+ }
+ .splitwithmargin{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  margin: auto 10px;
+  width: 100vw !important;
+  height: auto !important;
+ }
+ .one{
+  margin: 10px auto;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+ }
+ .name3{
+  grid-template-columns: 1fr !important;
+  width: 100vw !important;
+ }
+ .input{
+  width: 90% !important;
+  height: 30px;
+ }
+ .table{
+  margin-top: 50px;
+  overflow-y: auto;
+ }
+ .overflow{
+  height: fit-content !important;
+}
+.height{
+  height: auto !important;
+}
+.auto{
+grid-template-columns: 1fr !important;
+}
+ }

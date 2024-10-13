@@ -108,7 +108,7 @@ const GraphWithData = () => {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px', padding: '20px', boxSizing: 'border-box', height: '30vh' , }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px', padding: '20px', boxSizing: 'border-box', height: '30vh' , }} className='split'>
       <div style={{ width: '100%', height: 'fit-content', maxWidth: '600px', margin: '0 auto', backgroundColor: "white", borderRadius: "10px" }}>
         <Line data={chartData} options={options} />
       </div>

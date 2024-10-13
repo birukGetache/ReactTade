@@ -170,7 +170,7 @@ useEffect(() => {
   });
 console.log(expiredMedicines)
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '80vw', height: '85vh', overflowY: 'auto', justifyContent: 'space-between', padding: '20px', backgroundColor }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '80vw', height: '85vh', overflowY: 'auto', justifyContent: 'space-between', padding: '20px', backgroundColor }} className='name3'>
       {/* Graph Container */}
       <div style={{ padding: '20px', height: '60vh' }}>
         <h2 style={{ fontFamily:' "DM Sans", sans-serif',textAlign:"center" , color:textColor}}>Medicine Graph</h2>
@@ -193,7 +193,7 @@ console.log(expiredMedicines)
       </div>
 
       {/* Table Container */}
-      <div style={{ padding: '20px', height: '75vh', overflowY: 'auto' }}>
+      <div style={{ padding: '20px', height: '75vh', overflowY: 'auto' }} className='table'>
         <h2 style={{ fontFamily:' "DM Sans", sans-serif',textAlign:"center" , color:textColor}}>Medicine Table</h2>
         <input
           type="text"

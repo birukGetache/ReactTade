@@ -72,10 +72,10 @@ const PaymentReport = () => {
   const totalDayQuantity = currentItems.reduce((sum, item) => sum + item.soldQuantity, 0);
 
   return (
-    <div style={{ padding: '20px', height: "90vh", margin: '0 auto', backgroundColor }}>
+    <div style={{ padding: '20px', height: "90vh", margin: '0 auto', backgroundColor }} className='overflow'>
       <h2 style={{ fontFamily: ' "DM Sans", sans-serif', textAlign: "center", color: textColor }}>Payment Report</h2>
 
-      <Space style={{ marginBottom: '20px', display: "flex", gap: "20px", justifyContent: "center" }}>
+      <Space style={{ marginBottom: '20px', display: "flex", gap: "20px", justifyContent: "center" }} className='split'>
         <div>
           <FaPills style={{ marginRight: '8px' }} />
           <Input
@@ -83,6 +83,7 @@ const PaymentReport = () => {
             value={filters.name}
             onChange={(e) => handleFilterChange('name', e.target.value)}
             style={{ width: 200 }}
+            className='input'
           />
         </div>
         <div>
@@ -92,6 +93,7 @@ const PaymentReport = () => {
             onChange={(date) => handleFilterChange('date', date ? date.format('YYYY-MM-DD') : null)}
             style={{ width: 200 }}
             placeholder="Search by Date"
+               className='input'
           />
         </div>
         <div>
@@ -101,6 +103,7 @@ const PaymentReport = () => {
             value={filters.Method}
             onChange={(value) => handleFilterChange('Method', value)}
             style={{ width: 200 }}
+               className='input'
           >
             <Option value="">All</Option>
             <Option value="Credit Card">Credit Card</Option>

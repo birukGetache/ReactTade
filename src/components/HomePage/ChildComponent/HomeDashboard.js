@@ -5,6 +5,10 @@ height:46vh;
 margin:0;
 padding-left:34px;
 padding-right:32px;
+ @media screen and (max-width: 1500px) {
+  height:fit-content;
+
+}
 `
 export const Header1 = styled.div`
 height:20vh;
@@ -17,6 +21,11 @@ export const Body = styled.div`
 height:45vh;
 margin:0;
 background:transparent;
+ @media screen and (max-width: 800px) {
+ grid-template-columns:1fr !important;
+height:auto;
+margin: 10px 0px;
+}
 `
 export const TextWithDownload = styled.div`
 display:flex;
@@ -50,6 +59,11 @@ display:grid;
  background-color:white;
  border-radius:9px;
  border:2px solid #55b975;
+ @media screen and (max-width: 1500px) {
+  width: 230px;
+  height:180px;
+
+}
 `
 export const Card2 = styled.div`
 width:24%;
@@ -59,6 +73,11 @@ display:grid;
  background-color:white;
  border-radius:9px;
  border:3px solid #f2eaaa;
+  @media screen and (max-width: 1500px) {
+  width: 230px;
+  height:180px;
+
+}
 `
 export const Card3 = styled.div`
 width:24%;
@@ -68,6 +87,11 @@ display:grid;
  background-color:white;
  border-radius:9px;
  border:3px solid #40c0f7;
+  @media screen and (max-width: 1500px) {
+  width: 230px;
+  height:180px;
+
+}
 `
 export const Card4 = styled.div`
 width:24%;
@@ -77,6 +101,11 @@ display:grid;
  background-color:white;
  border-radius:9px;
  border:3px solid #eec2c1;
+  @media screen and (max-width: 1500px) {
+  width: 230px;
+  height:180px;
+
+}
 `
 
 export const Logo = styled.div`
@@ -152,6 +181,10 @@ export const S1 = styled.span`
   border: 2px solid #ccc;
   border-radius:3px;
   height:18vh;
+   @media screen and (max-width: 800px) {
+ 
+height:fit-content;
+}
  `
  export const HeaderBody = styled.div`
  display:flex;

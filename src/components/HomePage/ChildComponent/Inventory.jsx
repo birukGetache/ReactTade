@@ -30,7 +30,7 @@ const HomeDashboard = () =>{
      console.log(clicked);
    };
  return(
-    <div style={{backgroundColor  , height:'91vh', display:"grid"}}>
+    <div style={{backgroundColor  , height:'91vh', display:"grid"}} className='overflow'>
     <Header>
       <TextWithDownload>
         <div>
@@ -40,7 +40,7 @@ const HomeDashboard = () =>{
       
         {user.role === 'mainAdmin' && (<button  onClick={()=>handleClickd(6)} style={{width:"200px" , height:"50px" ,color:"white", fontSize:"20px",borderRadius:"5px",marginTop:"auto" , marginBottom:"30px" , border:"none" , backgroundColor:"#1d242e"}}>+ Add new Items</button>)}
         </TextWithDownload>
-        <div style={{display:"flex" , justifyContent:"center" , gap:"28px"  ,height:"60%"}}>
+        <div style={{display:"flex" , justifyContent:"center" , gap:"28px"  ,height:"60%"}} className='wrap'>
         <Card3>
            <Logo>
            <svg

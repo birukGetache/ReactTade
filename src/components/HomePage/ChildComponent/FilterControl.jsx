@@ -60,8 +60,8 @@ const FilterControls = () => {
 
   return (
     <>
-      <div style={{ width: "70vw", display: "flex", justifyContent: "space-between", height: "10vh" }}>
-        <div style={{ display: 'grid', marginRight: '20px', height: "fit-content", padding: "4px", borderRadius: "10px", fontSize: "30px", backgroundColor: "#ccc" }}>
+      <div style={{ width: "70vw", display: "flex", justifyContent: "space-between", height: "10vh" }} className='splitwithmargin'>
+        <div style={{ display: 'grid', marginRight: '20px', height: "fit-content", padding: "4px", borderRadius: "10px", fontSize: "30px", backgroundColor: "#ccc" }} className='one'>
           <label htmlFor="startDate" style={{ marginRight: '10px', margin: "0", padding: "0", fontFamily: '"DM Sans", sans-serif', textAlign: "center", border: "none", color: "#333" }}>Start Date:</label>
           <DatePicker
             selected={startDate}
@@ -78,7 +78,7 @@ const FilterControls = () => {
           />
         </div>
 
-        <div style={{ display: 'grid', marginRight: '20px', height: "fit-content", padding: "4px", borderRadius: "10px", fontSize: "30px", backgroundColor: "#ccc" }}>
+        <div style={{ display: 'grid', marginRight: '20px', height: "fit-content", padding: "4px", borderRadius: "10px", fontSize: "30px", backgroundColor: "#ccc" }} className='one'>
           <p style={{ marginRight: '10px', fontFamily: '"DM Sans", sans-serif', textAlign: "center", border: "none", color: "#333", margin: "0" }}>
             <FaChartLine color='green' size={25} /> Sales Status
           </p>
@@ -99,7 +99,7 @@ const FilterControls = () => {
           )}
         </div>
 
-        <div style={{ display: 'grid', marginRight: '20px', height: "fit-content", padding: "4px", borderRadius: "10px", fontSize: "30px", backgroundColor: "#ccc" }}>
+        <div style={{ display: 'grid', marginRight: '20px', height: "fit-content", padding: "4px", borderRadius: "10px", fontSize: "30px", backgroundColor: "#ccc" }} className='one'>
           <p style={{ marginRight: '10px', fontFamily: '"DM Sans", sans-serif', textAlign: "center", border: "none", color: "#333", margin: "0" }}>
             <FaSort color='green' size={25} /> Total Sales: ${totalSales.toFixed(2)}
           </p>

@@ -4,8 +4,9 @@ import MedicineTable from './MedicineTable';
 import { useDispatch } from 'react-redux';
 import { toggleClicked } from '../../../Reducer/dashboardSlice';
 import axios from 'axios';
-import {Button } from 'antd'
+import { Button } from 'antd';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 const HomeDashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -20,6 +21,7 @@ const HomeDashboard = () => {
   const borderColor = isDarkTheme ? '#555' : '#dedede';
   const selectBorderColor = isDarkTheme ? '#555' : '#ccc';
   const labelColor = isDarkTheme ? '#ecf0f1' : '#2c3e50';
+
   useEffect(() => {
     const fetchFilterOptions = async () => {
       try {
@@ -47,26 +49,36 @@ const HomeDashboard = () => {
     dispatch(toggleClicked(value));
   };
 
+  const isMediumOrLarger = useMediaQuery({ query: '(min-width: 500px)' });
+
   return (
-    <div style={{ backgroundColor, height: '91vh', display: "grid", gridTemplateRows: "1fr 1fr 11fr", overflowY: "auto", width: "80vw", overflowX: "hidden" }}>
-      <header style={{ display: "flex", justifyContent: "space-between", padding: "20px", height: "fit-content" }}>
-        <h1 style={{ paddingLeft: "20px", marginTop: "0", fontFamily: "cursive" , color:textColor}}>Inventory List of Medicines (298)</h1>
-        {user.role === 'mainAdmin' && (
-          <Button
-            style={{ width: "200px", height: "50px", color: "white", fontSize: "20px", borderRadius: "5px", marginBottom: "30px", border: "none", backgroundColor: "#1d242e" }}
-            onClick={() => handleClickd(6)}
-          >
-            + Add new Items
-          </Button>
-        )}
-      </header>
-      <SearchAndFilter
-        onSearchChange={handleSearchChange}
-        onFilterChange={handleFilterChange}
-        filterOptions={filterOptions}
-      />
-      <MedicineTable searchTerm={searchTerm} filterOption={filterOption} />
-    </div>
+    <>
+      {isMediumOrLarger ? (
+        <div style={{ backgroundColor, height: '91vh', display: "grid", gridTemplateRows: "1fr 1fr 11fr", overflowY: "auto", width: "80vw", overflowX: "hidden" }}>
+          <header style={{ display: "flex", justifyContent: "space-between", padding: "20px", height: "fit-content" }}>
+            <h1 style={{ paddingLeft: "20px", marginTop: "0", fontFamily: "cursive", color: textColor }}>
+              Inventory List of Medicines (298)
+            </h1>
+            {user.role === 'mainAdmin' && (
+              <Button
+                style={{ width: "200px", height: "50px", color: "white", fontSize: "20px", borderRadius: "5px", marginBottom: "30px", border: "none", backgroundColor: "#1d242e" }}
+                onClick={() => handleClickd(6)}
+              >
+                + Add new Items
+              </Button>
+            )}
+          </header>
+          <SearchAndFilter
+            onSearchChange={handleSearchChange}
+            onFilterChange={handleFilterChange}
+            filterOptions={filterOptions}
+          />
+          <MedicineTable searchTerm={searchTerm} filterOption={filterOption} />
+        </div>
+      ) : (
+        <p style={{color:"red" , fontSize:"30px" , textAlign:"center" , backgroundColor , fontFamily:"fantasy"}}>It is not Allowed for mobile User </p>
+      )}
+    </>
   );
 };
 

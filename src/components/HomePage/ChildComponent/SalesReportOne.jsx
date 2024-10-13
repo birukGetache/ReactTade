@@ -23,7 +23,7 @@ const HomeDashboard = () =>{
     <Header1>
       <TextWithDownload1>
         <div>
-        <P style={{color:textColor}}>Dashboard</P>
+        <P style={{color:textColor}}>Sale Report</P>
         <S style={{color:textColor}}>Quick data over view of Invertory</S>
         </div>
       

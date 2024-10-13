@@ -33,7 +33,7 @@ const MedicineDetails = () => {
   }, [selectedGroupId]);
 
   return (
-    <div style={{ padding: '20px' , backgroundColor , height:"85vh"}}>
+    <div style={{ padding: '20px' , backgroundColor , height:"85vh"}} className='height'>
       <h1 style={{ fontSize: '24px', marginBottom: '20px' , color:textColor }}>Details for Group {selectedGroupId}</h1>
       <div style={{
         display: 'grid',
@@ -42,7 +42,7 @@ const MedicineDetails = () => {
         margin: '0 auto',
         maxWidth: '1200px',
         padding: '20px'
-      }}>
+      }} className='auto'>
         {medicines.map(medicine => (
           <div key={medicine._id} style={{
             backgroundColor: '#fff',

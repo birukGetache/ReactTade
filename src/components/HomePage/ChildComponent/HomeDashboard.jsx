@@ -168,7 +168,7 @@ useEffect(() => {
       
      <EllipsisMenu></EllipsisMenu>
         </TextWithDownload>
-        <div style={{display:"flex" , justifyContent:"center" , gap:"28px"  ,height:"60%"}}>
+        <div style={{display:"flex" , justifyContent:"center" , gap:"28px"  ,height:"60%" , }} className='wrap' >
            <Card >
             <Logo>
                 <svg width="50px" height="50px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#1cad70" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5 6.27273L12.3636 3L19.7273 6.27273V11.1818C19.7273 15.7227 16.5855 19.9691 12.3636 21C8.14182 19.9691 5 15.7227 5 11.1818V6.27273ZM12.3636 19.3064C15.6527 18.2918 18.0909 14.88 18.0909 11.1818V7.33637L12.3636 4.79182L6.63636 7.33637V11.1818C6.63636 14.88 9.07455 18.2918 12.3636 19.3064Z" fill="#1cad70"></path> <path d="M11 16H13V13H16V11H13V8H11V11H8V13H11V16Z" fill="#1cad70"></path> </g></svg>
@@ -268,7 +268,7 @@ useEffect(() => {
            </Card4>
         </div>
     </Header>
-    <Body style={{color:textColor ,paddingLeft:"30px", paddingRight:"30px", display:"grid",gap:"25px" ,placeContent:"center", gridTemplateColumns:"1fr 1fr"}}>
+    <Body style={{color:textColor ,paddingLeft:"30px", paddingRight:"30px", display:"grid",gap:"25px" ,placeContent:"center", gridTemplateColumns:"1fr 1fr"}} className='over'>
       <Body1>
 <HeaderBody>
 <div style={{fontFamily:' "DM Sans", sans-serif'  , color:textColor}}>Inventory</div>
