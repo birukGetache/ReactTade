@@ -297,7 +297,7 @@ if(user.role=== ''){
                     <InvertoryC clicked={clicked} onClick={ ()=>handleClickd(11)}>
                     <div style={{display:"flex" , alignItems:"center" , height:"9vh"}}>
                         <PeopleIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
-                        <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Contact management</DashboardP>
+                        <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Customer</DashboardP>
                     </div>
                     <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh"}}>
                         {iconC ? (
