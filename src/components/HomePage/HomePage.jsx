@@ -227,7 +227,8 @@ if(user.role=== ''){
                     <EllipsisMenu />
                     
                 </div>
-                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px"}} onClick={hums}></FaTimes>}
+                <div>
+                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px", position:"absolute" , top:"130px" , right:"10px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px" , position:"absolute" , top:"130px" , right:"10px" }} onClick={hums}></FaTimes>}
              {showhumbergerR && user.role === 'mainAdmin' && (
                     <>
                         <Dashboard clicked={clicked} onClick={ ()=>handleClickd(1)}>
@@ -332,6 +333,7 @@ if(user.role=== ''){
                 </Get>
                 </>)}
                 <Fotter>Powered by Safeware © 2024 v 1.1.2</Fotter>
+                </div>
             </SideBar>
             <HomeContent>
                 <Header>
