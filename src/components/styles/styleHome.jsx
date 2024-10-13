@@ -81,7 +81,7 @@ export const Dashboard = styled.div`
   width:90%;
   padding: 3px;
   border-radius: 6px;
-  margin:4px;
+   margin:4px auto;
 }
 `;
 export const InputDiv = styled.div`
@@ -136,7 +136,7 @@ cursor:pointer;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
-  margin:4px;
+  margin:4px auto;
 
 }
 `
@@ -180,7 +180,7 @@ cursor:pointer;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
-  margin:4px;
+  margin:4px auto;
 
 }
 `
@@ -207,7 +207,7 @@ cursor:pointer;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
-  margin:4px;
+  margin:4px auto;
 
 }
 `
@@ -234,7 +234,7 @@ cursor:pointer;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
-  margin:4px;
+  margin:4px auto;
   
 }
 
@@ -262,7 +262,7 @@ cursor:pointer;
   border: 2px solid white; 
   padding: 3px;
   border-radius: 6px;
-  margin:4px;
+    margin:4px auto;
   
 }
 `
@@ -285,7 +285,7 @@ cursor:pointer;
   padding: 3px;
     width:90%;
   border-radius: 6px;
-  margin:4px;
+  margin:4px auto;
   
 }
 `

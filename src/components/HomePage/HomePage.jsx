@@ -228,7 +228,7 @@ if(user.role=== ''){
                     
                 </div>
                 <div>
-                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px", position:"absolute" , top:"130px" , right:"10px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px" , position:"absolute" , top:"130px" , right:"10px" }} onClick={hums}></FaTimes>}
+                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px", position:"absolute" , top:"130px" , right:"-10px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px" , position:"absolute" , top:"130px" , right:"-10px" }} onClick={hums}></FaTimes>}
              {showhumbergerR && user.role === 'mainAdmin' && (
                     <>
                         <Dashboard clicked={clicked} onClick={ ()=>handleClickd(1)}>
