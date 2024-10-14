@@ -213,7 +213,7 @@ if(user.role=== ''){
         <Home>
             <SideBar>
                 <Image src='./Logo.png' alt='Logo' />
-                <div style={{display:"flex", justifyContent:"space-between" , alignItems:"center" ,borderTop:"1px solid black"}} className="profile-contaner">
+                <div style={{display:"flex", justifyContent:"space-between" , alignItems:"center" }} className="profile-contaner">
                     <AdminInfo>
                         <div style={{position:"relative" , display:"flex" , alignItems:"center"}} onClick={ ()=>handleClickd(26)}>
                             <PAdminInfo    src={user.image || '/defualt-image.avif'}  alt='User Profile' />
@@ -228,7 +228,7 @@ if(user.role=== ''){
                     
                 </div>
                 <div>
-                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px", position:"absolute" , top:"130px" , right:"10px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px" , position:"absolute" , top:"130px" , right:"10px" }} onClick={hums}></FaTimes>}
+                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px", position:"absolute" , top:"150px" , right:"10px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px" , position:"absolute" , top:"150px" , right:"10px" }} onClick={hums}></FaTimes>}
              {showhumbergerR && user.role === 'mainAdmin' && (
                     <>
                         <Dashboard clicked={clicked} onClick={ ()=>handleClickd(1)}>

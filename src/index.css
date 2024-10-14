@@ -95,6 +95,10 @@ html, body {
  .buttom{
   margin-bottom: 10px;
  }
+ .profile-contaner{
+  position: relative;
+  left: -80px;
+ }
  .newTable{
   display: grid !important;
   grid-template-columns: 1fr !important;
