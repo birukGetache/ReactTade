@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Form, Input, Button, I } from '../styles/styleLoginForm.jsx';
 import { useDispatch } from 'react-redux'; // Import useDispatch
 import { setUser } from '../../Reducer/userSlices.js'; // Adjust the import path accordingly
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import toastify CSS
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -62,14 +64,15 @@ const LoginForm = () => {
           username: result.data.user.username,
           image: userImage,
           role: result.data.user.role,
-          password:result.data.user.password
+          password: result.data.user.password,
         }));
         // Navigate to the home page upon successful login
         navigate('/home');
       }
     } catch (error) {
       console.error('Login error:', error);
-      // Handle login error (e.g., display an error message to the user)
+      // Display a toast notification for the error
+      toast.error('Login failed! Please check your username and password.');
     }
   };
 
@@ -93,6 +96,7 @@ const LoginForm = () => {
         />
         <Button type='submit'>Login</Button>
       </Form>
+      <ToastContainer /> {/* Add the ToastContainer component */}
     </Container>
   );
 };
