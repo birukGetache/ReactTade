@@ -122,13 +122,14 @@ if(res.status=== 400){
       ) : (
         <>
         <div style={{ padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' , height:"fit-content" , display:"flex" , gap:"20px"}}>
-          <div style={{ marginBottom: '10px' ,}}>
-            <img 
-              src={user.image || 'default-profile.png'} 
-              alt="Profile" 
-              style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover' }} 
-            />
-          </div>
+        <div style={{ marginBottom: '10px', backgroundColor: "white" }}>
+  <img 
+    src={user.image ||'/defualt-image.avif'} 
+    alt="Profile" 
+    style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', backgroundColor: "wheat" }} 
+  />
+</div>
+
           <div>
           <p style={{ color:textColor , fontFamily:' "DM Sans", sans-serif'}}><strong style={{fontFamily:' "DM Sans", sans-serif' , color:textColor}}>Name:</strong> {user.username}</p>
           <p style={{ color:textColor , fontFamily:' "DM Sans", sans-serif'}}><strong style={{fontFamily:' "DM Sans", sans-serif', color:textColor}}>Role:</strong> {user.role}</p>

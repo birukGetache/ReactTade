@@ -31,11 +31,18 @@ export const TextWithDownload = styled.div`
 display:flex;
 justify-content:space-between;
 height:35%;
+ @media screen and (max-width: 1500px) {
+ width:100vw;
+   display:grid;
+   place-content:center;
+   place-items:center;
+   gap:3px;}
 `
 export const TextWithDownload1 = styled.div`
 display:flex;
 justify-content:space-between;
 height:20%;
+
 `
 export const P = styled.p`
 font-size:30px;

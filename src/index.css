@@ -84,10 +84,21 @@ html, body {
   height:fit-content !important;
 
  }
+ 
  .splitwithmargin{
   display: grid !important;
   grid-template-columns: 1fr !important;
   margin: auto 10px;
+  width: 100vw !important;
+  height: auto !important;
+ }
+ .buttom{
+  margin-bottom: 10px;
+ }
+ .newTable{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  margin: auto;
   width: 100vw !important;
   height: auto !important;
  }

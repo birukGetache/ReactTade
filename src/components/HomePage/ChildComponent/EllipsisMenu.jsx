@@ -36,6 +36,7 @@ const EllipsisMenu = ({ data }) => {
           borderRadius: '4px',
           fontFamily: '"DM Sans", sans-serif',
         }}
+        className='buttom'
       >
         Download
       </button>

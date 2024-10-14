@@ -216,7 +216,7 @@ if(user.role=== ''){
                 <div style={{display:"flex", justifyContent:"space-between" , alignItems:"center" ,borderTop:"1px solid black"}} className="profile-contaner">
                     <AdminInfo>
                         <div style={{position:"relative" , display:"flex" , alignItems:"center"}} onClick={ ()=>handleClickd(26)}>
-                            <PAdminInfo src={user.image} alt='User Profile' />
+                            <PAdminInfo    src={user.image || '/defualt-image.avif'}  alt='User Profile' />
                             <div style={{width:"14px" , height:"14px", borderRadius:"7px" , top:"65%", right:"0", position:"absolute" ,background:"green"}}></div>
                         </div>
                         <div style={{display:"flex" , height:"fit-content" , marginTop:"auto" ,marginBottom:"auto",marginLeft:"20px", flexDirection:"column"}}>

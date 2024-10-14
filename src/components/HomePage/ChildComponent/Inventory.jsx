@@ -5,6 +5,7 @@ import EllipsisMenu from './EllipsisMenu';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { toggleClicked } from '../../../Reducer/dashboardSlice.js';
+import { Button } from 'antd';
 const SvgWrapper = styled.svg`
   height: 40px;
   width: 40px;
@@ -32,13 +33,13 @@ const HomeDashboard = () =>{
  return(
     <div style={{backgroundColor  , height:'91vh', display:"grid"}} className='overflow'>
     <Header>
-      <TextWithDownload>
+  <TextWithDownload>
         <div>
         <P style={{color:textColor}}>Inventory</P>
         <S style={{color:textColor}}>List of medicines available for sales.</S>
         </div>
       
-        {user.role === 'mainAdmin' && (<button  onClick={()=>handleClickd(6)} style={{width:"200px" , height:"50px" ,color:"white", fontSize:"20px",borderRadius:"5px",marginTop:"auto" , marginBottom:"30px" , border:"none" , backgroundColor:"#1d242e"}}>+ Add new Items</button>)}
+     {user.role === 'mainAdmin' && (<Button  onClick={()=>handleClickd(6)} style={{width:"200px" , height:"50px" ,color:"white", fontSize:"20px",borderRadius:"5px",marginTop:"auto" , marginBottom:"30px" , border:"none" , backgroundColor:"#1d242e"}}>+ Add</Button>)} 
         </TextWithDownload>
         <div style={{display:"flex" , justifyContent:"center" , gap:"28px"  ,height:"60%"}} className='wrap'>
         <Card3>
