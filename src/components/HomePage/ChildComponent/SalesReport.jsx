@@ -53,7 +53,7 @@ setS(itemCount);
       };
 
  return(
-    <div style={{backgroundColor  , height:'91vh', display:"grid"}} className='overflow'>
+    <div style={{backgroundColor  ,  height:"89vh" , boxSizing:"border-box" , display:"grid"}} className='overflow'>
     <Header>
       <TextWithDownload>
         <div>

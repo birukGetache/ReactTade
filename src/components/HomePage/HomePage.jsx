@@ -45,7 +45,7 @@ import MedicineDetails from './ChildComponent/MedicineDetails.jsx';
 import SalesChart from './ChildComponent/SalesChart.jsx';
 import { Navigate } from 'react-router-dom';
 import Cosmo from './ChildComponent/Cosmo.jsx';
-
+import { useMediaQuery } from 'react-responsive';
 //for humbergur
 import { FaBars , FaTimes} from 'react-icons/fa';
 const HomePage = () => {
@@ -58,7 +58,7 @@ const HomePage = () => {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     //for humbergur
-    const [showhumberger , setHum] = useState(true);
+    const [showhumberger , setHum] = useState(false);
     const [showhumbergerR , setHumR] = useState(false);
     const hums = ()  =>{
         setHum(!showhumberger);
@@ -208,7 +208,7 @@ if(user.role=== ''){
     const handleClickd = (value) => {
         dispatch(toggleClicked(value));
     };
-
+    const isMediumOrLarger = useMediaQuery({ query: '(min-width: 500px)' });
     return (
         <Home>
             <SideBar>
@@ -227,20 +227,39 @@ if(user.role=== ''){
                     <EllipsisMenu />
                     
                 </div>
-                <div>
-                {showhumberger == true ? <FaBars style={{color:"white" , fontSize:"20px", position:"absolute" , top:"150px" , right:"10px" }} onClick={hums}></FaBars>: <FaTimes style={{color:"white" , fontSize:"20px" , position:"absolute" , top:"150px" , right:"10px" }} onClick={hums}></FaTimes>}
-             {showhumbergerR && user.role === 'mainAdmin' && (
+                <div style={{width:"100%"}}>
+                {!isMediumOrLarger && (
+  <div>
+    {!isMediumOrLarger ? (
+      showhumberger ? (
+       
+        <FaTimes 
+        style={{ color: "white", fontSize: "20px", position: "absolute", top: "130px", right: "10px" }} 
+        onClick={hums} 
+      />
+      ) : (
+        <FaBars 
+          style={{ color: "white", fontSize: "20px", position: "absolute", top: "130px", right: "10px" }} 
+          onClick={hums} 
+        />
+      )
+    ) : null}
+  </div>
+)}
+
+
+             {( (isMediumOrLarger && user.role === 'mainAdmin') || (showhumbergerR && user.role === 'mainAdmin') )&& (
                     <>
                         <Dashboard clicked={clicked} onClick={ ()=>handleClickd(1)}>
                             <DashboardIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                             <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Dashboard</DashboardP>
                         </Dashboard> </>  )}
-                        {showhumbergerR &&   <Invertory clicked={clicked} onClick={ ()=>handleClickd(13)}>
-                            <div style={{display:"flex" , alignItems:"center" , height:"9vh"}}>
+                        {( (isMediumOrLarger && user.role === 'mainAdmin') || (showhumbergerR && user.role === 'mainAdmin') ) &&   <Invertory clicked={clicked} onClick={ ()=>handleClickd(13)}>
+                            <div style={{display:"flex" , alignItems:"center" , height:"9vh" , paddingLeft:"30px"}}  className = "add">
                                 <StorageIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                                 <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Inventory</DashboardP>
                             </div>
-                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh"}}>
+                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" , paddingRight:"10px" , paddingLeft:"120px" , boxSizing:"border-box"}}>
                                 {icons ? (
                                     <ExpandMoreIcon
                                         style={{ color: 'white', fontSize: '25px' }}
@@ -261,12 +280,12 @@ if(user.role=== ''){
                                 </div>
                             }
                         </Invertory>}
-                        { showhumbergerR && user.role === 'mainAdmin' && (   <>  <Invertorys clicked={clicked} onClick={ ()=>handleClickd(15)}>
-                            <div style={{display:"flex" , alignItems:"center" , height:"9vh"}}>
+                        {( (isMediumOrLarger && user.role === 'mainAdmin') || (showhumbergerR && user.role === 'mainAdmin') ) && (   <>  <Invertorys clicked={clicked} onClick={ ()=>handleClickd(15)}>
+                            <div style={{display:"flex" , alignItems:"center" , height:"9vh" , paddingLeft:"30px"}} className = "add" >
                                 <AssessmentIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                                 <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Report</DashboardP>
                             </div>
-                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh"}} >
+                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" , paddingRight:"10px" ,  paddingLeft:"120px" , boxSizing:"border-box"}}>
                                 {showiconR ? (
                                     <ExpandMoreIcon
                                         style={{ color: 'white', fontSize: '25px' }}
@@ -288,18 +307,18 @@ if(user.role=== ''){
                         </Invertorys>
                     </>
                 )}
-                    {showhumbergerR && user.role === 'mainAdmin' && (  <Configuration clicked={clicked} onClick={ ()=>handleClickd(2)}>
+                      {( (isMediumOrLarger && user.role === 'mainAdmin') || (showhumbergerR && user.role === 'mainAdmin') ) && (  <Configuration clicked={clicked} onClick={ ()=>handleClickd(2)}>
                     <TuneIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                     <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Configuration</DashboardP>
                 </Configuration>)}
-                {showhumbergerR &&(
+                {( (isMediumOrLarger && user.role === 'mainAdmin') || (showhumbergerR && user.role === 'mainAdmin') ) &&(
                     <>
                     <InvertoryC clicked={clicked} onClick={ ()=>handleClickd(11)}>
-                    <div style={{display:"flex" , alignItems:"center" , height:"9vh"}}>
+                    <div style={{display:"flex" , alignItems:"center" , height:"9vh" , paddingLeft:"30px"}} className = "add">
                         <PeopleIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                         <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Customer</DashboardP>
                     </div>
-                    <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh"}}>
+                    <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" ,paddingRight:"10px",   paddingLeft:"120px" , boxSizing:"border-box"}}>
                         {iconC ? (
                             <ExpandMoreIcon
                                 style={{ color: 'white', fontSize: '25px' }}

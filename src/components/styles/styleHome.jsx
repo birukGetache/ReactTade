@@ -3,7 +3,7 @@ import { space, layout, color, typography, border, position } from 'styled-syste
 import { useSelector } from 'react-redux';
 
 export const Home = styled.div`
-width:100%;
+width:100vw;
 display:grid;
 grid-template-columns:2fr 8fr;
 background-color:#edf1f5;
@@ -77,7 +77,7 @@ export const Dashboard = styled.div`
  display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   width:100%;
   padding: 3px;
   border-radius: 6px;
@@ -119,12 +119,12 @@ font-size:15px;
 
 `
 export const Invertory = styled.div`
-padding-left:30px;
-padding-right:30px;
-display:grid;
-grid-template-columns:1fr 1fr;
-align-items:center;
-height:fit-content;
+
+  box-sizing:border-box;
+display: grid;
+width:100%;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto;
 cursor:pointer;  
  background-color: ${(props) => (props.clicked === 13 ? '#009099' : 'transparent')};
  @media screen and (max-width: 1500px) {
@@ -133,7 +133,7 @@ cursor:pointer;
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
       width:100%;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
@@ -141,8 +141,7 @@ cursor:pointer;
 }
 `
 export const InvertoryC = styled.div`
-padding-left:30px;
-padding-right:30px;
+
 display:grid;
 grid-template-columns:1fr 1fr;
 align-items:center;
@@ -155,7 +154,7 @@ cursor:pointer;
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
       width:100%;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   padding: 3px;
   border-radius: 6px;
    margin:4px auto;
@@ -163,8 +162,6 @@ cursor:pointer;
 }
 `
 export const Invertorys = styled.div`
-padding-left:30px;
-padding-right:30px;
 display:grid;
 grid-template-columns:1fr 1fr;
 align-items:center;
@@ -177,7 +174,7 @@ cursor:pointer;
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
       width:100%;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
@@ -204,7 +201,7 @@ cursor:pointer;
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
       width:100%;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
@@ -231,7 +228,7 @@ cursor:pointer;
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
       width:100%;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
@@ -258,7 +255,7 @@ cursor:pointer;
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
       width:100%;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   padding: 3px;
   border-radius: 6px;
     margin:4px auto;
@@ -280,7 +277,7 @@ cursor:pointer;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: 70px;
-  border: 2px solid white; 
+  border: none; padding-left:5px; 
   padding: 3px;
     width:100%;
   border-radius: 6px;
@@ -289,13 +286,9 @@ cursor:pointer;
 }
 `
 export const P = styled.p`
+text-align:center;
 display:block;
-width:14vw;
  color:white; 
- padding-left:160px; 
- padding-right:-200px;
-  margin-right:-100px;
-   margin-left:-100px; 
      background-color: ${(props) => (props.clicked === 7 ? '#009099' : '#1a222b')};
      padding-top:25px;
        padding-bottom:20px;
@@ -303,147 +296,24 @@ width:14vw;
         margin-bottom:0;
          font-family:DM Sans ;
          font-size:14px;
-          @media screen and (max-width: 1500px) {
-    width:200px;
-     padding-left:10px;
-     padding-right:10px;
-     font-size:25px;
-     text-align:center;
-     z-index:999;
-  
-}
-         `
-export const P2 = styled.p`
-display:block;
-width:14vw;
- color:white; 
- padding-left:160px; 
- padding-right:-200px;
-  margin-right:-100px;
-   margin-left:-100px; 
-     background-color: ${(props) => (props.clicked === 8 ? '#009099' : '#1a222b')};
-     padding-top:25px;
-       padding-bottom:20px;
-       margin-top:0;
-        margin-bottom:0;
-         font-family:DM Sans ;
-         font-size:14px;
-             @media screen and (max-width: 1500px) {
-     width:200px;
-     padding-left:10px;
-     padding-right:10px;
-     font-size:25px;
-     text-align:center;
-   z-index:999;
-}
-`
-export const P7 = styled.p`
-display:block;
-width:14vw;
- color:white; 
- padding-left:160px; 
- padding-right:-200px;
-  margin-right:-100px;
-   margin-left:-100px; 
-     background-color: ${(props) => (props.clicked === 101 ? '#009099' : '#1a222b')};
-     padding-top:25px;
-       padding-bottom:20px;
-       margin-top:0;
-        margin-bottom:0;
-         font-family:DM Sans ;
-         font-size:14px;
-            @media screen and (max-width: 1500px) {
-   width:200px;
-     padding-left:10px;
-     padding-right:10px;
-     font-size:25px;
-     text-align:center;
-   z-index:999;
-}
-`
-export const P3 = styled.p`
-display:block;
-width:14vw;
- color:white; 
- padding-left:160px; 
- padding-right:-200px;
-  margin-right:-100px;
-   margin-left:-100px; 
-     background-color: ${(props) => (props.clicked === 9 ? '#009099' : '#1a222b')};
-     padding-top:25px;
-       padding-bottom:20px;
-       margin-top:0;
-        margin-bottom:0;
-         font-family:DM Sans ;
-         font-size:14px;
-            @media screen and (max-width: 1500px) {
- width:200px;
-     padding-left:10px;
-     padding-right:10px;
-     font-size:25px;
-     text-align:center;
-   z-index:999;
-}
-`
-export const P6 = styled.p`
-display:block;
-width:14vw;
- color:white; 
- padding-left:160px; 
- padding-right:-200px;
-  margin-right:-100px;
-   margin-left:-100px; 
-     background-color: ${(props) => (props.clicked === 18 ? '#009099' : '#1a222b')};
-     padding-top:25px;
-       padding-bottom:20px;
-       margin-top:0;
-        margin-bottom:0;
-         font-family:DM Sans ;
-         font-size:14px;
-            @media screen and (max-width: 1500px) {
-  width:100%;
-     padding-left:10px;
-     padding-right:10px;
+         @media screen and (max-width: 1500px) {
+   width:100%;
+     padding-left:0px;
+     padding-right:0px;
      margin-right:0;
      margin-left:0;
      font-size:25px;
      text-align:center;
    z-index:999;
+        border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
-`
-export const P4 = styled.p`
+         `
+export const P2 = styled.p`
+text-align:center;
 display:block;
-width:14vw;
  color:white; 
- padding-left:160px; 
- padding-right:-200px;
-  margin-right:-100px;
-   margin-left:-100px; 
-     background-color: ${(props) => (props.clicked === 10 ? '#009099' : '#1a222b')};
-     padding-top:25px;
-       padding-bottom:20px;
-       margin-top:0;
-        margin-bottom:0;
-         font-family:DM Sans ;
-         font-size:14px;
-            @media screen and (max-width: 1500px) {
- width:200px;
-     padding-left:10px;
-     padding-right:10px;
-     font-size:25px;
-     text-align:center;
-   z-index:999;
-}
-`
-export const P5 = styled.p`
-display:block;
-width:14vw;
- color:white; 
- padding-left:160px; 
- padding-right:-200px;
-  margin-right:-100px;
-   margin-left:-100px; 
-     background-color: ${(props) => (props.clicked === 17 ? '#009099' : '#1a222b')};
+     background-color: ${(props) => (props.clicked === 8 ? '#009099' : '#1a222b')};
      padding-top:25px;
        padding-bottom:20px;
        margin-top:0;
@@ -459,6 +329,128 @@ width:14vw;
      font-size:25px;
      text-align:center;
    z-index:999;
+        border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+`
+export const P7 = styled.p`
+text-align:center;
+display:block;
+ color:white; 
+     background-color: ${(props) => (props.clicked === 101 ? '#009099' : '#1a222b')};
+     padding-top:25px;
+       padding-bottom:20px;
+       margin-top:0;
+        margin-bottom:0;
+         font-family:DM Sans ;
+         font-size:14px;
+           @media screen and (max-width: 1500px) {
+    width:100%;
+     font-size:25px;
+     text-align:center;
+     z-index:999;
+     margin-right:0;
+     margin-left:0;
+     padding-left:0;
+     padding-right:0;
+      border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+`
+export const P3 = styled.p`
+text-align:center;
+display:block;
+ color:white;  
+     background-color: ${(props) => (props.clicked === 9 ? '#009099' : '#1a222b')};
+     padding-top:25px;
+       padding-bottom:20px;
+       margin-top:0;
+        margin-bottom:0;
+         font-family:DM Sans ;
+         font-size:14px;
+            @media screen and (max-width: 1500px) {
+    width:100%;
+     font-size:25px;
+     text-align:center;
+     z-index:999;
+     margin-right:0;
+     margin-left:0;
+     padding-left:0;
+     padding-right:0;
+      border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+`
+export const P6 = styled.p`
+display:block;
+text-align:center;
+ color:white; 
+     background-color: ${(props) => (props.clicked === 18 ? '#009099' : '#1a222b')};
+     padding-top:25px;
+       padding-bottom:20px;
+       margin-top:0;
+        margin-bottom:0;
+         font-family:DM Sans ;
+         font-size:14px;
+    @media screen and (max-width: 1500px) {
+    width:100%;
+     font-size:25px;
+     text-align:center;
+     z-index:999;
+     margin-right:0;
+     margin-left:0;
+     padding-left:0;
+     padding-right:0;
+      border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+`
+export const P4 = styled.p`
+text-align:center;
+display:block;
+ color:white; 
+     background-color: ${(props) => (props.clicked === 10 ? '#009099' : '#1a222b')};
+     padding-top:25px;
+       padding-bottom:20px;
+       margin-top:0;
+        margin-bottom:0;
+         font-family:DM Sans ;
+         font-size:14px;
+        @media screen and (max-width: 1500px) {
+    width:100%;
+     font-size:25px;
+     text-align:center;
+     z-index:999;
+     margin-right:0;
+     margin-left:0;
+     padding-left:0;
+     padding-right:0;
+      border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+`
+export const P5 = styled.p`
+text-align:center;
+display:block;
+ color:white;  
+     background-color: ${(props) => (props.clicked === 17 ? '#009099' : '#1a222b')};
+     padding-top:25px;
+       padding-bottom:20px;
+       margin-top:0;
+        margin-bottom:0;
+         font-family:DM Sans ;
+         font-size:14px;
+            @media screen and (max-width: 1500px) {
+    width:100%;
+     font-size:25px;
+     text-align:center;
+     z-index:999;
+     margin-right:0;
+     margin-left:0;
+     padding-left:0;
+     padding-right:0;
+      border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 `
 export const Fotter  = styled.p`

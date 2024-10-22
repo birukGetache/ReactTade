@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Modal, Form, Input, DatePicker, Select, Table, InputNumber, Tabs } from 'antd';
+import { Button, Modal, Form, Input, DatePicker, Select, Table, InputNumber, Tabs , Button as Buttom  , Row , Col , Card}  from 'antd';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
+import { maxWidth, width } from 'styled-system';
+import { useMediaQuery } from 'react-responsive';
+import { FaCartArrowDown } from 'react-icons/fa';
+import jsPDF from 'jspdf';
 const { Option } = Select;
 const { TabPane } = Tabs;
 
@@ -18,16 +21,25 @@ const Cosmo = () => {
   const [saleVisible, setSaleVisible] = useState(false);
   const [soldQuantity, setSoldQuantity] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [countCart , setCountCart] = useState(0);
+  const [cartsItem , setCartItem] = useState([]);
   const [dataTransaction, setDataTransaction] = useState([]);
   const [transactionSearchText, setTransactionSearchText] = useState('');
   const [filteredTransactionData, setFilteredTransactionData] = useState(dataTransaction);
   const [analysisData, setAnalysisData] = useState([]);
-
+   const [width, setWidth] = useState(600);
+   const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
   useEffect(() => {
     fetchItems();
     fetchTransaction();
+    call();
+  
   }, []);
-
+  const call = ()=>{
+    if(isMobile){
+      setWidth(300)
+    }
+  }
   const fetchTransaction = async () => {
     try {
       const response = await axios.get('https://backtade-2.onrender.com/salesTransaction');
@@ -52,21 +64,33 @@ const Cosmo = () => {
 
     try {
       await axios.put(`https://backtade-2.onrender.com/Cosmo/${selectedItem._id}`, updatedItem);
+      console.log("I finished");
+      
       await axios.post('https://backtade-2.onrender.com/salesTransaction', {
-        itemId: selectedItem._id,
         name: selectedItem.name,
         price: selectedItem.price,
         quantity: soldQuantity,
-        pharmacist: user.username,
+        pharamacist: user.username,
       });
+      console.log("Post request successful:");
+      
+    
       fetchItems();
       fetchTransaction();
       setSaleVisible(false);
       setSoldQuantity(0);
+      setCountCart(prev => prev + 1 );
+      const tax = selectedItem.price * 0.15;
+      setCartItem(prev => [
+        ...prev, // Spread the existing items
+        { name:selectedItem.name, price: selectedItem.price , quantity:soldQuantity , tax: tax, itemTax: '15%', totalPrice: selectedItem.price * tax  } // Append the new medicine
+      ]);
       Modal.success({ content: 'Item sold successfully!' });
+    
     } catch (error) {
       console.error('Error processing sale:', error);
     }
+    
   };
 
   const fetchItems = async () => {
@@ -118,6 +142,7 @@ const Cosmo = () => {
       }
       fetchItems();
       handleClose();
+     
     } catch (error) {
       console.error(editMode ? 'Error updating item:' : 'Error adding item:', error);
     }
@@ -238,6 +263,51 @@ const Cosmo = () => {
       },
     });
   };
+  const downloadReceipt = () => {
+    const doc = new jsPDF();
+    
+    // Title
+    doc.setFontSize(20);
+    doc.text('Receipt For Taddesse pharamacy', 14, 16);
+    doc.setFontSize(12);
+    doc.setLineHeightFactor(1.5); // Set line height for better spacing
+    
+    // Set starting position for the content
+    let startY = 30;
+  
+    cartsItem.forEach(item => {
+      // Add item details
+  
+      doc.text(`Name:`, 14, startY);
+      doc.text(item.name, 80, startY);
+      startY += 10;
+  
+      doc.text(`Price:`, 14, startY);
+      doc.text(`$${item.price.toFixed(2)}`, 80, startY);
+      startY += 10;
+  
+      doc.text(`Quantity:`, 14, startY);
+      doc.text(item.quantity.toString(), 80, startY);
+      startY += 10;
+  
+   
+  
+      doc.text(`Tax:`, 14, startY);
+      doc.text(`${(item.tax * 100).toFixed(2)}%`, 80, startY);
+      startY += 10;
+  
+      doc.text(`Total Price:`, 14, startY);
+      doc.text(`$${item.totalPrice.toFixed(2)}`, 80, startY);
+      startY += 15; // Extra space between items
+  
+      // Draw line separator
+      doc.line(14, startY, 196, startY); // Adjust the end point for the line
+      startY += 5; // Extra space after line
+    });
+  
+    // Save the PDF
+    doc.save('receipt.pdf');
+  };
 
   const calculateAnalysisData = (transactions) => {
     const analysisMap = {};
@@ -267,7 +337,7 @@ const Cosmo = () => {
   ];
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px" , height:"89vh" , boxSizing:"border-box"}} className='cosmos' >
       <Tabs defaultActiveKey="1">
         {user.role === "mainAdmin" && (
           <TabPane tab="Items" key="1">
@@ -319,12 +389,12 @@ const Cosmo = () => {
                 </Form.Item>
               </Form>
             </Modal>
-            <Table dataSource={filteredData} columns={columns} pagination={false} />
+            <Table dataSource={filteredData} columns={columns} pagination={false} className='cosmo'/>
           </TabPane>
         )}
         <TabPane tab="Sales" key="2">
           <h3>Sales Data</h3>
-          <Table dataSource={data} columns={columnSale} pagination={false} />
+          <Table dataSource={data} columns={columnSale} pagination={false} className='cosmo'/>
 
           <Modal
             title={`Sell ${selectedItem?.name}`}
@@ -358,7 +428,7 @@ const Cosmo = () => {
               onChange={handleTransactionSearch}
               style={{ margin: '16px 0' }}
             />
-            <Table dataSource={filteredTransactionData} columns={ColumnsTransaction} pagination={false} />
+            <Table dataSource={filteredTransactionData} columns={ColumnsTransaction} pagination={false} className='cosmo'/>
             <div style={{ margin: "10px" }}>
               <Button onClick={handleReset}>Reset Transaction</Button>
             </div>
@@ -367,8 +437,8 @@ const Cosmo = () => {
         {user.role === "mainAdmin" && (
           <TabPane tab="Analysis" key="4">
             <h3>Sales Analysis</h3>
-            <Table dataSource={analysisData} columns={analysisColumns} pagination={false} />
-            <BarChart width={600} height={300} data={analysisData}>
+            <Table dataSource={analysisData} columns={analysisColumns} pagination={false} className='cosmo' />
+            <BarChart width={width} height={300} data={analysisData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="pharamacist" />
               <YAxis />
@@ -379,6 +449,28 @@ const Cosmo = () => {
             </BarChart>
           </TabPane>
         )}
+        <TabPane tab={ <><FaCartArrowDown size={15}></FaCartArrowDown> <span className='cartNumber'>{countCart}</span></>} key="5">
+          <div>
+      <Buttom type="primary" onClick={downloadReceipt} style={{ marginBottom: '20px' }}>
+        Download Receipt
+      </Buttom>
+      <Row gutter={16}>
+        {cartsItem.map(item => (
+          <Col span={8} key={item.id}>
+            <Card title={item.name} bordered={true}>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>ID: &nbsp;....................................</strong>{item.id}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Name: &nbsp;....................................</strong>{item.name}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Price: &nbsp;....................................</strong> ${item.price.toFixed(2)}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Quantity: &nbsp;....................................</strong> {item.quantity}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Item Tax: &nbsp;....................................</strong> {item.itemTax}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Tax: &nbsp;....................................</strong> {(item.tax * 100).toFixed(2)}%</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Total Price: &nbsp;....................................</strong> ${item.totalPrice.toFixed(2)}</p>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </div>
+          </TabPane>
       </Tabs>
     </div>
   );

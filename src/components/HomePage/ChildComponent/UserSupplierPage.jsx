@@ -58,7 +58,7 @@ const UserSupplierPage = () => {
   }
 
   return (
-    <PageContainer style={{backgroundColor}}>
+    <PageContainer style={{backgroundColor , height:"89vh" , boxSizing:"border-box"}}>
       <Title style={{color:textColor}}>Users and Suppliers</Title>
 
       <h2 style={{color:textColor}}>Users</h2>

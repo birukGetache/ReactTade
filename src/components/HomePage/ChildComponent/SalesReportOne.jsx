@@ -19,7 +19,7 @@ const HomeDashboard = () =>{
   const selectBorderColor = isDarkTheme ? '#555' : '#ccc';
   const labelColor = isDarkTheme ? '#ecf0f1' : '#2c3e50';
  return(
-    <div style={{backgroundColor  , display:"grid"  ,gridTemplateRows:"1fr 3fr" , overflowY:"auto" , height:"91vh"}}>
+    <div style={{backgroundColor  , display:"grid"  ,gridTemplateRows:"1fr 3fr" , overflowY:"auto" , height:"89vh" , boxSizing:"border-box"}} className='salesReportOne'>
     <Header1>
       <TextWithDownload1>
         <div>
@@ -29,7 +29,7 @@ const HomeDashboard = () =>{
       
      <EllipsisMenu></EllipsisMenu>
         </TextWithDownload1>
-        <div style={{display:"flex" , justifyContent:"center" , gap:"28px"  ,height:"60%"}}>
+        <div style={{display:"flex" , justifyContent:"center" , gap:"28px"  ,height:"60%"}} className='hidden'>
           
         </div>
     </Header1>

@@ -37,6 +37,7 @@ const ContactList = styled.ul`
 
 const ContactItem = styled.li`
   display: flex;
+  flex-direction:column;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
@@ -225,7 +226,7 @@ const ContactListPage = () => {
   }
 
   return (
-    <Container style={{backgroundColor}}>
+    <Container style={{backgroundColor , height:"89vh" , boxSizing:"border-box"}}>
       {selectedContact ? (
         <>
           <BackButton onClick={handleBack}>

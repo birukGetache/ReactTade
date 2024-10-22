@@ -137,7 +137,7 @@ const PaymentReport = () => {
           total: filteredData.length,
         }}
         onChange={handleSort}
-        style={{  overflowX: 'auto' }}
+        style={{  overflowX: 'auto' , backgroundColor:"white" }}
       />
     </div>
   );

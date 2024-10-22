@@ -3,30 +3,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { updateQuantity } from '../../../Reducer/MedicineSlice';
 import Barcode from 'react-barcode';
-import { Tabs, Layout, Button, Card, Form, Input, Select, Table } from 'antd';
+import { Tabs, Layout, Button, Card, Form, Input, Select, Table ,  Col, Row , Button as Buttom } from 'antd';
 import { InfoCircleOutlined, HistoryOutlined, DollarOutlined } from '@ant-design/icons';
-
+import { FaCartArrowDown } from 'react-icons/fa';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 const { TabPane } = Tabs;
 const { Content } = Layout;
 const { Option } = Select;
-
 const MedicineInventory = () => {
   const dispatch = useDispatch();
   const medicine = useSelector((state) => state.medicine.selectedMedicine);
   const settings = useSelector((state) => state.settings);
   const user = useSelector((state) => state.user);
-  
   const isDarkTheme = settings.displaySettings.theme === 'dark';
   const backgroundColor = isDarkTheme ? '#2c3e50' : '#edf1f5';
   const textColor = isDarkTheme ? '#ecf0f1' : '#2c3e50';
-  
+  const [countCart , setCountCart] = useState(0);
   const [Method, setMethod] = useState('Cash');
   const [history, setHistory] = useState([]);
   const [soldQuantity, setSoldQuantity] = useState(0);
   const [price, setPrice] = useState(medicine?.price || 0);
   const [soldInOption, setSoldInOption] = useState(medicine?.soldIn || 'pk');
   const [totalSales, setTotalSales] = useState(0);
-  
+  const [cartsItem , setCartItem] = useState([]);
   const [pharmacistFilter, setPharmacistFilter] = useState('');
   const [nameFilter, setNameFilter] = useState('');
   const [dateFilter, setDateFilter] = useState('');
@@ -71,6 +71,59 @@ const MedicineInventory = () => {
     }
   };
   
+  const downloadReceipt = () => {
+    const doc = new jsPDF();
+    
+    // Title
+    doc.setFontSize(20);
+    doc.text('Receipt For Taddesse pharamacy', 14, 16);
+    doc.setFontSize(12);
+    doc.setLineHeightFactor(1.5); // Set line height for better spacing
+    
+    // Set starting position for the content
+    let startY = 30;
+  
+    cartsItem.forEach(item => {
+      // Add item details
+      doc.text(`ID:`, 14, startY);
+      doc.text(item.id, 80, startY);
+      startY += 10;
+  
+      doc.text(`Name:`, 14, startY);
+      doc.text(item.name, 80, startY);
+      startY += 10;
+  
+      doc.text(`Price:`, 14, startY);
+      doc.text(`$${item.price.toFixed(2)}`, 80, startY);
+      startY += 10;
+  
+      doc.text(`Quantity:`, 14, startY);
+      doc.text(item.quantity.toString(), 80, startY);
+      startY += 10;
+  
+      doc.text(`Sold In:`, 14, startY);
+      doc.text(item.soldIn, 80, startY);
+      startY += 10;
+  
+      doc.text(`Tax:`, 14, startY);
+      doc.text(`${(item.tax * 100).toFixed(2)}%`, 80, startY);
+      startY += 10;
+  
+      doc.text(`Total Price:`, 14, startY);
+      doc.text(`$${item.totalPrice.toFixed(2)}`, 80, startY);
+      startY += 15; // Extra space between items
+  
+      // Draw line separator
+      doc.line(14, startY, 196, startY); // Adjust the end point for the line
+      startY += 5; // Extra space after line
+    });
+  
+    // Save the PDF
+    doc.save('receipt.pdf');
+  };
+  
+  
+
   const renderSoldInSelect = () => {
     return (
       <Select value={soldInOption} onChange={handleSoldInChange} style={{ textAlign: "center" }}>
@@ -135,13 +188,17 @@ const MedicineInventory = () => {
           Method,
           saler: user.username,
         };
-
+        setCartItem(prev => [
+          ...prev, // Spread the existing items
+          { id:medicine.medicineId,name:medicine.medicineName, quantity: medicine.quantity , soldIn:medicine.soldIn , price:medicine.price , method:medicine.method , tax:TAX_RATE, totalPrice: price * TAX_RATE + price } // Append the new medicine
+        ]);
+        
         await axios.post('https://backtade-2.onrender.com/transactions', transaction);
 
         setHistory((prevHistory) => [transaction, ...prevHistory]);
         dispatch(updateQuantity({ medicineId: medicine.medicineId, newQuantity }));
         setSoldQuantity(0);
-        
+          setCountCart(prev => prev+1)
       } catch (error) {
         console.error('Error updating medicine or posting transaction:', error);
         alert('Error processing transaction');
@@ -150,7 +207,7 @@ const MedicineInventory = () => {
       alert('Invalid quantity');
     }
   };
-
+  console.log(cartsItem)
   const columns = [
     {
       title: 'Date',
@@ -195,7 +252,7 @@ const MedicineInventory = () => {
   }
 
   return (
-    <Layout style={{ padding: '20px', backgroundColor }}>
+    <Layout style={{ padding: '20px', backgroundColor , height:"89vh" , boxSizing:"border-box" }}>
       <Content style={{ fontFamily: '"DM Sans", sans-serif', color: textColor }}>
         <h1 style={{ textAlign: "center" }}>Medicine Inventory</h1>
         <Tabs defaultActiveKey="1">
@@ -270,6 +327,28 @@ const MedicineInventory = () => {
               <h2>Total Sales</h2>
               <h3>${totalSales.toFixed(2)}</h3>
             </div>
+          </TabPane>
+          <TabPane tab={ <><FaCartArrowDown size={15}></FaCartArrowDown> <span className='cartNumber'>{countCart}</span></>} key="4">
+          <div>
+      <Buttom type="primary" onClick={downloadReceipt} style={{ marginBottom: '20px' }}>
+        Download Receipt
+      </Buttom>
+      <Row gutter={16}>
+        {cartsItem.map(item => (
+          <Col span={8} key={item.id}>
+            <Card title={item.name} bordered={true}>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>ID: &nbsp;....................................</strong>{item.id}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Name: &nbsp;....................................</strong>{item.name}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Price: &nbsp;....................................</strong> ${item.price.toFixed(2)}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Quantity: &nbsp;....................................</strong> {item.quantity}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Sold In: &nbsp;....................................</strong> {item.soldIn}</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Tax: &nbsp;....................................</strong> {(item.tax * 100).toFixed(2)}%</p>
+              <p style={{display:"flex" , justifyContent:"space-between"}}><strong>Total Price: &nbsp;....................................</strong> ${item.totalPrice.toFixed(2)}</p>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </div>
           </TabPane>
         </Tabs>
       </Content>

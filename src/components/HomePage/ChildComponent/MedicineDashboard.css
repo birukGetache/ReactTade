@@ -1,6 +1,7 @@
 .medicine-table {
-    width: 100%;
+    width: calc(100vw - 20px);
     border-collapse: collapse;
+    overflow-x: auto;
   }
   
   .medicine-table th, .medicine-table td {

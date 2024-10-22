@@ -50,9 +50,9 @@ const OrderList = () => {
   const visibleOrders = orders.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto', overflowY: "auto", height: "60vh" }}>
+    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto', overflowY: "auto", height: "60vh" }} className='orderContainer'>
       <h2 style={{ fontFamily: '"DM Sans", sans-serif', textAlign: "center", border: "none", color: textColor }}>Order List</h2>
-      <div ref={containerRef} style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #ddd' }}>
+      <div ref={containerRef} style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #ddd' }} className='order'>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>

@@ -130,7 +130,7 @@ const ContactReport = () => {
   };
 
   return (
-    <Container style={{backgroundColor , marginTop:"0" , paddingTop:"0"}}>
+    <Container style={{backgroundColor , marginTop:"0" , paddingTop:"0" , height:"89vh" , boxSizing:"border-box" , display:"flex" , flexDirection:"column" , justifyContent:"center" , alignItems:"center"}}>
       <Section>
         <Titles style={{color:textColor}}>Contact Report</Titles>
         <Description style={{color:textColor}}>Total Contacts: {totalContacts}</Description>

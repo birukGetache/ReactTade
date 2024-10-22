@@ -13,7 +13,7 @@ const MedicineItem = ({ medicine }) => (
 const MedicineGroup = () => {
 
   return (
-    <div style={{ padding: '20px' , height:"85vh" , overflowY:"auto"}}>
+    <div style={{ padding: '20px' , height:"85vh" , overflowY:"auto" , height:"89vh" , boxSizing:"border-box"}}>
       <h1 style={{fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"none" , color:"#333"}}>Medicine Group</h1>
       <div style={{ padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         <h2>Group Name: Pain Relief Medications</h2>

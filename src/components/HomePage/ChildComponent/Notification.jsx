@@ -104,7 +104,7 @@ const CalendarWithEvents = () => {
   );
 
   return (
-    <div style={{ position: 'relative', height: "91vh", backgroundColor , padding:"20px" }}>
+    <div style={{ position: 'relative', height:"89vh" , boxSizing:"border-box", backgroundColor , padding:"20px" }} className='notification'>
 
       {/* Search Input */}
       <Input
@@ -115,13 +115,15 @@ const CalendarWithEvents = () => {
       />
 
       {/* Medicines Table */}
-      <h2 style={{ color: textColor ,  fontFamily: '"DM Sans", sans-serif', color: textColor }}>Medicines</h2>
+      <h2 style={{ color: textColor ,  fontFamily: '"DM Sans", sans-serif', color: textColor  , textAlign:"center"}}>Medicines</h2>
+      
       <Table
         columns={columns}
         dataSource={filteredMedicines}
         rowKey="medicineId"
         pagination={false}
         style={{ backgroundColor }}
+        className='table'
       />
       
       {/* Notify analysis time if the selected date is 10 */}

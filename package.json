@@ -26,6 +26,7 @@
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.13",
     "formik": "^2.4.6",
+    "gsap": "^3.12.5",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.3",
     "lodash": "^4.17.21",

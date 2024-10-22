@@ -55,7 +55,7 @@ const Configuration = () => {
   };
 
   return (
-    <Container style={{ backgroundColor: isDarkTheme ? '#2c3e50' : '#edf1f5' }}>
+    <Container style={{ backgroundColor: isDarkTheme ? '#2c3e50' : '#edf1f5', height:"89vh" , boxSizing:"border-box" }}>
       <Title level={2} style={{ textAlign: 'center', color: isDarkTheme ? '#ecf0f1' : '#2c3e50' }}>
         Pharmacy Configuration
       </Title>

@@ -63,9 +63,7 @@ const UserProfile = () => {
   };
   const Delete = async (item) => {
     try {
-      const currentDate = new Date();
-      const formattedDate = currentDate.toLocaleDateString();
-      const res = await axios.get(`https://backtade-2.onrender.com/transaction/${formattedDate}`);
+      const res = await axios.delete(`https://backtade-2.onrender.com/usersAdmin/${item.username}`);
       if (res.status === 200) {
         toast.success("User deleted successfully", {
           position: "top-right",
@@ -116,7 +114,7 @@ if(res.status=== 400){
 
 
   return (
-    <div style={{  gap:"10px" , overflowY:"auto", height:"89vh" ,overflowX:"hidden", backgroundColor}}>
+    <div style={{  gap:"10px" , overflowY:"auto", height:"89vh" ,overflowX:"hidden", backgroundColor }}>
       {isEditing ? (
         <UpdateUserComponent user={user} onSave={handleSave} onCancel={handleCancel} />
       ) : (

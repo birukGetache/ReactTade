@@ -14,7 +14,7 @@ const GetTechHelp = () => {
   };
 
   return (
-    <div className="get-tech-help" style={{backgroundColor , maxWidth:"100%", height:"91vh" , padding:"0" , margin:"0" , display:"flex" , alignItems:"center", justifyContent:"center" }}>
+    <div className="get-tech-help" style={{backgroundColor , maxWidth:"100%", height:"89vh" , boxSizing:"border-box", padding:"0" , margin:"0" , display:"flex" , alignItems:"center", justifyContent:"center" }}>
     
       
       <section className="help-options">

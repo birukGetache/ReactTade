@@ -118,7 +118,7 @@ const CustomerPage = () => {
   );
 
   return (
-    <div style={{ padding: '20px', backgroundColor: isDarkTheme ? '#2c3e50' : '#edf1f5' }}>
+    <div style={{ padding: '20px', backgroundColor: isDarkTheme ? '#2c3e50' : '#edf1f5' }} className='customerPage'>
       <h1 style={{ color: textColor }}>Customer Management</h1>
 
       <Tabs defaultActiveKey="1">
@@ -134,6 +134,7 @@ const CustomerPage = () => {
             dataSource={filteredData}
             rowKey="_id"
             pagination={{ pageSize: 5 }}
+            className='customer'
           >
             <Table.Column title="Name" dataIndex="name" key="name" />
             <Table.Column title="Email" dataIndex="email" key="email" />
@@ -153,7 +154,7 @@ const CustomerPage = () => {
         </TabPane>
         
         <TabPane tab="Add Customer" key="2">
-          <Form layout="vertical" style={{ marginBottom: '20px' }}>
+          <Form layout="vertical" style={{ marginBottom: '20px', maxWidth:"500px" , backgroundColor:"gray", borderRadius:"10px" , padding:"10px" , boxSizing:"border-box" , margin:"auto" }}>
             <Form.Item label="Name">
               <Input
                 value={newCustomer.name}

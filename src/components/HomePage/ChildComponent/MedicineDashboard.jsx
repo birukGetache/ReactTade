@@ -170,11 +170,11 @@ useEffect(() => {
   });
 console.log(expiredMedicines)
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '80vw', height: '85vh', overflowY: 'auto', justifyContent: 'space-between', padding: '20px', backgroundColor }} className='name3'>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '80vw', height:"89vh" , boxSizing:"border-box", overflowY: 'auto', justifyContent: 'space-between', padding: '20px', backgroundColor }} className='name3'>
       {/* Graph Container */}
-      <div style={{ padding: '20px', height: '60vh' }}>
+      <div style={{ padding: '20px', height: '60vh' }} className='medicineDashboard'>
         <h2 style={{ fontFamily:' "DM Sans", sans-serif',textAlign:"center" , color:textColor}}>Medicine Graph</h2>
-        <div style={{ height: '100%' }}>
+        <div style={{ height: '100%' }} className='barcontainer'>
           <Bar
             data={data}
             options={{
@@ -193,7 +193,7 @@ console.log(expiredMedicines)
       </div>
 
       {/* Table Container */}
-      <div style={{ padding: '20px', height: '75vh', overflowY: 'auto' }} className='table'>
+      <div style={{ padding: '20px', height: '75vh', overflowY: 'auto'  }} className='table'>
         <h2 style={{ fontFamily:' "DM Sans", sans-serif',textAlign:"center" , color:textColor}}>Medicine Table</h2>
         <input
           type="text"
@@ -216,6 +216,7 @@ console.log(expiredMedicines)
           onChange={(e) => setDescriptionSearchTerm(e.target.value)}
           style={{width:"150px" , height:"20px" , borderRadius:"10px" , fontFamily:' "DM Sans", sans-serif',textAlign:"center", border:"1px solid black" , margin:"7px"}}
         />
+        <div className='medicineTable'>
         <table className="medicine-table">
           <thead>
             <tr>
@@ -240,6 +241,7 @@ console.log(expiredMedicines)
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Expired Medicines Section */}

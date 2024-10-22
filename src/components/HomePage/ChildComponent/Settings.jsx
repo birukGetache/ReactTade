@@ -74,7 +74,7 @@ const Settings = () => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={{containerStyle  , height:"89vh" , boxSizing:"border-box" , overflowX:"auto"}}>
       <h1 style={{ color: 'inherit' }}>Settings</h1>
 
       {/* Display Settings Section */}

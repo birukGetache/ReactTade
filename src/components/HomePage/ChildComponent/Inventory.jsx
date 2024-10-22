@@ -31,7 +31,7 @@ const HomeDashboard = () =>{
      console.log(clicked);
    };
  return(
-    <div style={{backgroundColor  , height:'91vh', display:"grid"}} className='overflow'>
+    <div style={{backgroundColor  , height:'89vh', display:"grid" , boxSizing:"border-box"}} className='overflow'>
     <Header>
   <TextWithDownload>
         <div>

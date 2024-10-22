@@ -92,7 +92,7 @@ const ContactManagement = () => {
   };
 
   return (
-    <div style={{ display: 'flex', padding: '2rem', backgroundColor: isDarkTheme ? '#2c3e50' : '#edf1f5', height: '90vh', gap: '2rem' }} className='split'>
+    <div style={{ display: 'flex', padding: '2rem', backgroundColor: isDarkTheme ? '#2c3e50' : '#edf1f5', height:"89vh" , boxSizing:"border-box", gap: '2rem' }} className='split'>
       <div style={{ flex: 1, maxWidth: '600px', background: 'white', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', padding: '2rem' }}>
         <Title level={2} style={{ fontFamily: '"DM Sans", sans-serif' }}>{editIndex !== null ? 'Edit Contact' : 'Add Contact'}</Title>
         <Form onFinish={handleSubmit(onSubmit)}>

@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-height:46vh;
+height:44vh;
 margin:0;
 padding-left:34px;
 padding-right:32px;
  @media screen and (max-width: 1500px) {
   height:fit-content;
-
+padding-left:0;
+padding-right:0;
 }
 `
 export const Header1 = styled.div`
@@ -15,6 +16,11 @@ height:20vh;
 margin:0;
 padding-left:34px;
 padding-right:32px;
+ @media screen and (max-width: 1500px) {
+padding-left:10px;
+padding-right:10px;
+width:calc(100vw - 20px);
+}
 `
 
 export const Body = styled.div`
@@ -23,8 +29,11 @@ margin:0;
 background:transparent;
  @media screen and (max-width: 800px) {
  grid-template-columns:1fr !important;
-height:auto;
+height:fit-content;
 margin: 10px 0px;
+padding-left:0px !important;
+padding-right:0px !important;
+box-size:border-box ;
 }
 `
 export const TextWithDownload = styled.div`

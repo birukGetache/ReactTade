@@ -13,7 +13,7 @@ const MedicineGroup = () => {
   const selectBorderColor = isDarkTheme ? '#555' : '#ccc';
   const labelColor = isDarkTheme ? '#ecf0f1' : '#2c3e50';
   return (
-    <div style={{ backgroundColor, height: '91vh', display: "grid" }} className='height'>
+    <div style={{ backgroundColor, height:"89vh" , boxSizing:"border-box", display: "grid" }} className='height'>
       <Header>
         <TextWithDownload>
           <div>
