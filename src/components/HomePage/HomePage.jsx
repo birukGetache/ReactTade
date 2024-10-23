@@ -227,7 +227,7 @@ if(user.role=== ''){
                     <EllipsisMenu />
                     
                 </div>
-                <div style={{width:"100%"}}>
+                <div style={{width:"100%"}} className='homebar'>
                 {!isMediumOrLarger && (
   <div>
     {!isMediumOrLarger ? (
@@ -259,7 +259,7 @@ if(user.role=== ''){
                                 <StorageIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                                 <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Inventory</DashboardP>
                             </div>
-                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" , paddingRight:"10px" , paddingLeft:"120px" , boxSizing:"border-box"}}>
+                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" , paddingRight:"10px" , paddingLeft:"120px" , boxSizing:"border-box"}} className='pad'>
                                 {icons ? (
                                     <ExpandMoreIcon
                                         style={{ color: 'white', fontSize: '25px' }}
@@ -285,7 +285,7 @@ if(user.role=== ''){
                                 <AssessmentIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                                 <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Report</DashboardP>
                             </div>
-                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" , paddingRight:"10px" ,  paddingLeft:"120px" , boxSizing:"border-box"}}>
+                            <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" , paddingRight:"10px" ,  paddingLeft:"120px" , boxSizing:"border-box"}} className='pad'>
                                 {showiconR ? (
                                     <ExpandMoreIcon
                                         style={{ color: 'white', fontSize: '25px' }}
@@ -318,7 +318,7 @@ if(user.role=== ''){
                         <PeopleIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                         <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Customer</DashboardP>
                     </div>
-                    <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" ,paddingRight:"10px",   paddingLeft:"120px" , boxSizing:"border-box"}}>
+                    <div style={{display:"flex" , justifyContent:"flex-end", alignItems:"center", height:"9vh" ,paddingRight:"10px",   paddingLeft:"120px" , boxSizing:"border-box"}} className='pad'>
                         {iconC ? (
                             <ExpandMoreIcon
                                 style={{ color: 'white', fontSize: '25px' }}
@@ -332,7 +332,7 @@ if(user.role=== ''){
                         )}
                     </div>
                     {showC && 
-                        <div style={{width:"100%" , marginRight:"-100px"}} className='sublist'>
+                        <div style={{width:"100%" }} className='sublist'>
                             <P5 clicked={clicked} onClick={(event) => handleItemClick(17, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>contacts</P5>
                             <P6 clicked={clicked} onClick={(event) => handleItemClick(18, event)} style={{fontFamily:' "DM Sans", sans-serif' }}>contact Report</P6>
                         </div>

@@ -170,7 +170,7 @@ useEffect(() => {
   });
 console.log(expiredMedicines)
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '80vw', height:"89vh" , boxSizing:"border-box", overflowY: 'auto', justifyContent: 'space-between', padding: '20px', backgroundColor }} className='name3'>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height:"89vh" , boxSizing:"border-box", overflowY: 'auto', justifyContent: 'space-between', padding: '20px', backgroundColor }} className='name3'>
       {/* Graph Container */}
       <div style={{ padding: '20px', height: '60vh' }} className='medicineDashboard'>
         <h2 style={{ fontFamily:' "DM Sans", sans-serif',textAlign:"center" , color:textColor}}>Medicine Graph</h2>

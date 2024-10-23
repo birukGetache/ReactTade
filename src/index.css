@@ -90,16 +90,31 @@ grid-column: span 2;
   }
   .cosmos{
     padding: 0 !important;
+    overflow-x: auto;
+    width: 100%;
   }
   .customer{
     width: 100vw;
     overflow-x: auto;
    box-sizing: border-box;
   }
-
+  .homebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px; /* Optional: space between grid items */
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.pad{
+  padding-left: 10px !important;
+}
+.homepage{
+  height: unset !important;
+}
   .sublist{
     width: 100%;
-    z-index: 9999;
+    z-index: 99999;
+    position: unset;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,11 +130,14 @@ grid-column: span 2;
 .customer{
   background-color: white;
 }
-
+.buttom{
+  margin-bottom: 10px;
+}
 .name3{
   box-sizing: border-box;
   overflow-x: hidden;
   padding: 0 !important;
+  grid-template-columns: unset;
 }
 .medicineDashboard{
   box-sizing: border-box;
@@ -198,6 +216,11 @@ grid-column: span 2;
   width: 90% !important;
   height: 30px;
  }
+ .cosmo{
+  width: 100vw;
+  overflow-x:auto;
+   background-color: white;
+}
  .ant-table{
   margin-top: 50px;
   overflow-y: auto;
@@ -222,6 +245,7 @@ grid-column: span 2;
   box-sizing: border-box;
   overflow-x: auto;
  }
+
  .overflow{
   height: fit-content !important;
 }
@@ -270,8 +294,4 @@ grid-template-columns: 1fr !important;
   font-family: "DM Sans", sans-serif;
   text-transform: uppercase;
   color: #ddd;
-}
-.cosmo{
-  overflow-x:auto;
-   background-color: white;
 }

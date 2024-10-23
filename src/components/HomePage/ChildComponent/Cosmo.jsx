@@ -337,7 +337,7 @@ const Cosmo = () => {
   ];
 
   return (
-    <div style={{ padding: "20px" , height:"89vh" , boxSizing:"border-box"}} className='cosmos' >
+    <div style={{ padding: "20px" , height:"89vh" , boxSizing:"border-box"}} className='cosmo' >
       <Tabs defaultActiveKey="1">
         {user.role === "mainAdmin" && (
           <TabPane tab="Items" key="1">
@@ -349,6 +349,7 @@ const Cosmo = () => {
               value={searchText}
               onChange={handleSearch}
               style={{ margin: '16px 0' }}
+              className='cosmo'
             />
             <Modal
               title={editMode ? "Edit Item" : "Add New Item"}

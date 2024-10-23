@@ -54,7 +54,7 @@ const HomeDashboard = () => {
   return (
     <>
       {isMediumOrLarger ? (
-        <div style={{ backgroundColor, height:"89vh" , boxSizing:"border-box" , display: "grid", gridTemplateRows: "1fr 1fr 11fr", overflowY: "auto", width: "80vw", overflowX: "hidden" }}>
+        <div style={{ backgroundColor, height:"89vh" , boxSizing:"border-box" , display: "grid", gridTemplateRows: "1fr 1fr 11fr", overflowY: "auto", overflowX: "hidden" }}>
           <header style={{ display: "flex", justifyContent: "space-between", padding: "20px", height: "fit-content" }}>
             <h1 style={{ paddingLeft: "20px", marginTop: "0", fontFamily: "cursive", color: textColor }}>
               Inventory List of Medicines (298)

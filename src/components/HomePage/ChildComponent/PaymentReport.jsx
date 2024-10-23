@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { Table, Input, Select, DatePicker, Space, Button } from 'antd';
+import { Table, Input, Select, DatePicker, Space } from 'antd';
 import { FaPills, FaCalendarAlt, FaDollarSign } from 'react-icons/fa';
 import dayjs from 'dayjs';
+import EllipsisMenu2 from './EllipsisMenu2';
 
 const { Option } = Select;
 
@@ -13,7 +14,6 @@ const PaymentReport = () => {
   const backgroundColor = isDarkTheme ? '#2c3e50' : '#edf1f5';
   const textColor = isDarkTheme ? '#ecf0f1' : '#2c3e50';
   const [data, setData] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'asc' });
   const [filters, setFilters] = useState({ Method: '', name: '', date: null });
 
   useEffect(() => {
@@ -27,13 +27,6 @@ const PaymentReport = () => {
     };
     fetchData();
   }, []);
-
-  const handleSort = (pagination, filters, sorter) => {
-    setSortConfig({
-      key: sorter.field,
-      direction: sorter.order === 'ascend' ? 'asc' : 'desc',
-    });
-  };
 
   const handleFilterChange = (name, value) => {
     setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
@@ -136,9 +129,11 @@ const PaymentReport = () => {
           current: 1,
           total: filteredData.length,
         }}
-        onChange={handleSort}
-        style={{  overflowX: 'auto' , backgroundColor:"white" }}
+        style={{ overflowX: 'auto', backgroundColor: "white" }}
       />
+
+      {/* Pass the filtered data to EllipsisMenu2 */}
+  <div style={{display:"flex" , width:"100%" , justifyContent:"center"}}> <EllipsisMenu2 data={filteredData} /></div>   
     </div>
   );
 };

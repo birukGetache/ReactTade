@@ -4,8 +4,9 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { toggleClicked } from '../../../Reducer/dashboardSlice';
 import { setSelectedMedicine } from '../../../Reducer/MedicineSlice';
-
+import { useMediaQuery } from 'react-responsive';
 const MedicineDetails = () => {
+  const isMediumOrLarger = useMediaQuery({ query: '(min-width: 500px)' });
   const selectedGroupId = useSelector(state => state.slice.selectedGroupId);
   const settings = useSelector((state) => state.settings);
   const isDarkTheme = settings.displaySettings.theme === 'dark';
@@ -66,7 +67,7 @@ const MedicineDetails = () => {
             <p style={{ fontSize: '14px', color: '#666', margin: '0' }}>Sold In: {medicine.soldIn}</p>
             <p style={{ fontSize: '14px', color: '#666', margin: '0' }}>Strip per Pack: {medicine.stripPerPk}</p>
             <p style={{ fontSize: '14px', color: '#666', margin: '0' }}>Unit: {medicine.unit}</p>
-            <button style={{
+            { isMediumOrLarger && <button style={{
   backgroundColor: '#007bff',   // Background color
   color: '#fff',                 // Text color
   border: 'none',                // No border
@@ -85,7 +86,7 @@ const MedicineDetails = () => {
   dispatch(toggleClicked(28));
 }}>
   Sold
-</button>
+</button>}
 
           </div>
         ))}

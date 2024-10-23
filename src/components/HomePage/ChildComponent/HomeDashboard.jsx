@@ -158,7 +158,7 @@ useEffect(() => {
   dispatch(Meds({ num, group: c, short }));
 }, [num, c, short, dispatch]);
  return(
-    <div style={{backgroundColor  , display:"grid" , height:"89vh" , boxSizing:"border-box"}} >
+    <div style={{backgroundColor  , display:"grid" , height:"89vh" , boxSizing:"border-box"}} className='homepage'>
     <Header>
       <TextWithDownload>
         <div>

@@ -35,7 +35,7 @@ export const SideBar = styled.div`
  display: flex;  
    justify-content:center;
    align-items:center;
-    flex-wrap: wrap;      /* Allow items to wrap onto new lines */
+     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
     height: fit-content; 
     gap: 10px;
 }
@@ -82,6 +82,10 @@ export const Dashboard = styled.div`
   padding: 3px;
   border-radius: 6px;
    margin:4px auto;
+       backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 `;
 export const InputDiv = styled.div`
@@ -128,16 +132,21 @@ width:100%;
 cursor:pointer;  
  background-color: ${(props) => (props.clicked === 13 ? '#009099' : 'transparent')};
  @media screen and (max-width: 1500px) {
- position:relative;
+  position:relative;
+  min-height: 70px;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
-    height: 70px;
+    height: fit-content;
       width:100%;
   border: none; padding-left:5px; 
+    box-sizing:unset;
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
-
+ backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 `
 export const InvertoryC = styled.div`
@@ -152,13 +161,18 @@ cursor:pointer;
  position:relative;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
-    height: 70px;
       width:100%;
   border: none; padding-left:5px; 
-  padding: 3px;
-  border-radius: 6px;
-   margin:4px auto;
+  height:fit-contnent;
+  min-height: 70px;
 
+padding:3px;
+  border-radius: 6px;
+  margin:4px auto;
+ backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 `
 export const Invertorys = styled.div`
@@ -172,13 +186,17 @@ cursor:pointer;
  position:relative;
   display: flex;         /* Enable flexbox */
     flex-wrap: wrap;      /* Allow items to wrap onto new lines */
-    height: 70px;
+    height: fit-content;
+      min-height: 70px;
       width:100%;
   border: none; padding-left:5px; 
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
-
+ backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 `
 export const Configuration = styled.div`
@@ -205,7 +223,10 @@ cursor:pointer;
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
-
+ backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 `
 export const Notification = styled.div`
@@ -232,7 +253,10 @@ cursor:pointer;
   padding: 3px;
   border-radius: 6px;
   margin:4px auto;
-  
+   backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 
 `
@@ -259,7 +283,10 @@ cursor:pointer;
   padding: 3px;
   border-radius: 6px;
     margin:4px auto;
-  
+   backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 `
 export const Get = styled.div`
@@ -282,7 +309,10 @@ cursor:pointer;
     width:100%;
   border-radius: 6px;
   margin:4px auto;
-  
+   backdrop-filter: blur(100px); 
+       background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        justify-content:center;
 }
 `
 export const P = styled.p`
@@ -321,7 +351,6 @@ display:block;
          font-family:DM Sans ;
          font-size:14px;
             @media screen and (max-width: 1500px) {
-   width:380px;
      padding-left:0px;
      padding-right:0px;
      margin-right:0;
