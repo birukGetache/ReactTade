@@ -254,7 +254,7 @@ if(user.role=== ''){
                             <DashboardIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                             <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Dashboard</DashboardP>
                         </Dashboard> </>  )}
-                        {( (isMediumOrLarger) || (showhumbergerR && user.role === 'mainAdmin') ) &&   <Invertory clicked={clicked} onClick={ ()=>handleClickd(13)}>
+                        {( (isMediumOrLarger) || (showhumbergerR ) ) &&   <Invertory clicked={clicked} onClick={ ()=>handleClickd(13)}>
                             <div style={{display:"flex" , alignItems:"center" , height:"9vh" , paddingLeft:"30px"}}  className = "add">
                                 <StorageIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                                 <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Inventory</DashboardP>
@@ -311,7 +311,7 @@ if(user.role=== ''){
                     <TuneIcon style={{color:"white" , display:"inline" , marginRight:"20px"}} />
                     <DashboardP style={{display:"inline", fontFamily:' "DM Sans", sans-serif'}}>Configuration</DashboardP>
                 </Configuration>)}
-                {( (isMediumOrLarger ) || (showhumbergerR && user.role === 'mainAdmin') ) &&(
+                {( (isMediumOrLarger ) || (showhumbergerR) ) &&(
                     <>
                     <InvertoryC clicked={clicked} onClick={ ()=>handleClickd(11)}>
                     <div style={{display:"flex" , alignItems:"center" , height:"9vh" , paddingLeft:"30px"}} className = "add">
