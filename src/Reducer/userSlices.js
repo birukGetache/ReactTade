@@ -29,6 +29,7 @@ const userSlice = createSlice({
     }
 });
 
+
 // Export actions to be used in components
 export const { setUser, clearUser } = userSlice.actions;
 

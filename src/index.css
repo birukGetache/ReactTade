@@ -18,13 +18,17 @@ min-width: 100vw;
   margin-left:"10px";
 }
 .cartNumber{
-  width: 18px;
-  height: 18px;
   border-radius: 50%;
-  background-color: lightgreen;
+  width:20px;
+  height: 20px;
+  background-color: red;
   color: #333;
-  font-size: 10px;
-  margin-left:-10px ;
+  font-size: 15px;
+display: flex;
+align-items: end;
+justify-content: center;
+  box-sizing: border-box;
+  margin-left: -10%;
 }
 .admin-table th, .admin-table td {
   padding: 15px;
@@ -294,4 +298,92 @@ grid-template-columns: 1fr !important;
   font-family: "DM Sans", sans-serif;
   text-transform: uppercase;
   color: #ddd;
+}
+
+/* CSS Animation for Slide-In */
+@keyframes slideIn {
+  from {
+      transform: translateX(100%); /* Start from outside the right side */
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0); /* End at its normal position */
+      opacity: 1;
+  }
+}
+
+/* CSS Animation for Slide-Out */
+@keyframes slideOut {
+  from {
+      transform: translateX(0); /* Start from its normal position */
+      opacity: 1;
+  }
+  to {
+      transform: translateX(100%); /* Slide out to the right */
+      opacity: 0;
+  }
+}
+
+@keyframes go{
+  from {
+    transform: translateX(0); /* Start from its normal position */
+    opacity: 1;
+}
+to {
+    transform: translateX(100%); /* Slide out to the right */
+    opacity: 0;
+}
+}
+
+@keyframes come{
+  from {
+    transform: translateX(100%); /* Start from outside the right side */
+    opacity: 0;
+}
+to {
+    transform: translateX(0); /* End at its normal position */
+    opacity: 1;
+}
+}
+
+
+
+/* Slide-In Class */
+.slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+/* Slide-Out Class */
+.slide-out {
+  animation: slideOut 0.5s forwards;
+}
+
+.come {
+  animation: come 0.5s forwards;
+  background-color: rgb(19, 55, 93);
+  width: 600px;
+  position: absolute;
+  top:150px;
+  padding: 50px;
+  border-radius: 10px;
+  right:10px;
+}
+
+.go{
+  animation: go 0.5s forwards;
+  background-color: rgb(19, 55, 93);
+  width: 600px;
+  position: absolute;
+  top:150px;
+  padding: 50px;
+  border-radius: 10px;
+  right:10px;
+}
+.slide-in {
+  overflow: auto; /* Allows scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+}
+.slide-in::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Edge */
 }
